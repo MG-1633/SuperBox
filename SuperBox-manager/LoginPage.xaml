@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SuperBox_manager.LoginPage"
+             Title="LoginPage">
+
+    <Grid BackgroundColor="LightGray">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="220"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="50"/>
+
+
+        </Grid.RowDefinitions>
+    
+
+         <StackLayout>
+            <Frame BackgroundColor="SkyBlue" HeightRequest="120" WidthRequest="120" CornerRadius="60" Padding="0" Margin="0,100,0,0" HorizontalOptions="Center">
+                 <Image Source="https://www.easa.europa.eu/sites/default/files/inline-images/Drones-strategy-2.0-FEATURED-image-LIGHT_0.png" Aspect="AspectFill" Margin="0" />
+            </Frame>
+         </StackLayout>  
+        
+     </Grid>
+
+</ContentPage>
