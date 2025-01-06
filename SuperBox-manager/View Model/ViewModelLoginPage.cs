@@ -11,7 +11,14 @@ namespace SuperBox_manager.View_Model
     {
         [ObservableProperty]
         private string _userName;
+
         [ObservableProperty]
         private string _password;
+
+        
+        public async void Login()
+        {
+
+        }
     }
 }
