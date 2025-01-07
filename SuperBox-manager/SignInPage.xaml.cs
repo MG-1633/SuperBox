@@ -5,7 +5,6 @@ namespace SuperBox_manager;
 public partial class SignInPage : ContentPage
 {
 	private readonly FileService _fileService;
-	bool userIsSigningIn = false;
 	public SignInPage()
 	{
 		InitializeComponent();
@@ -14,49 +13,23 @@ public partial class SignInPage : ContentPage
 
 	private async void ButtonClicked_OnClicked(object sender, EventArgs e)
 	{
-		string username = this.username.Text; // Obținem textul din câmpul "username"
-		string password = this.password.Text; // Obținem textul din câmpul "password"
+		string username = this.username.Text; 
+		string password = this.password.Text;
+		string email = this.email.Text;
+		string phone = this.phone.Text;
 		var random = new Random();
 		string randomNumber = random.Next(100,1000).ToString();
-		string filename = "credentials.txt";
+		string fileName = "credentials.txt";					//<aplicație-sandbox>/Library/Application Support/    - ios				//data/data/<nume-pachet-aplicație>/files/      - android
 
-	if (!userIsSigningIn)
-	{
+			// salvam uuid/utilizator/parola/admin/email/phone?  in fisier
+		try	{
+			
+				await _fileService.SaveTextToFile(fileName, randomNumber, username, password, "No",phone , email );
 
-		
-
-		string savedData = await _fileService.ReadTextFromFile(filename, username, password);
-		if (savedData == "true")
-		{
-
-
-
-			if (!string.IsNullOrWhiteSpace(savedData))
-			{
-				//await DisplayAlert("Date Salvate", savedData, "OK");
-			}
-			else
-				await DisplayAlert("Info", "Nu există date salvate. Inregistreaza-te prima data."
-					, "ОК");
-
-
-
-			// Salvăm combinația utilizator/parolă într-un fișier
-			try
-			{
-				string fileName = "credentials.txt";
-				//<aplicație-sandbox>/Library/Application Support/      - ios
-
-				//data/data/<nume-pachet-aplicație>/files/      - android
-
-
-
-				//await _fileService.SaveTextToFile(fileName, randomNumber, username, password, "No" );
-
-				//await DisplayAlert("Succes", $"Datele au fost salvate în {fileName}.", "OK");
+				await DisplayAlert("Succes", $"Datele au fost salvate cu succes.", "OK");
 
 				//către MainPage
-				await Navigation.PushAsync(new MainPage());
+				await Navigation.PushAsync(new LoginPage());
 			}
 			catch (Exception ex)
 			{
@@ -64,74 +37,34 @@ public partial class SignInPage : ContentPage
 			}
 
 
-		}
-		else
-		{
-			await DisplayAlert("Eșec", "Utilizator sau parolă incorecte.", "OK");
-		}
+		
 
-	}
-	else
-	{
-
-
-
-
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 		
 		
 		
 		
 	
-
-			// Salvăm combinația uuid/utilizator/parolă/admin?  într-un fișier
-			try
-			{
-				string fileName = "credentials.txt";				//<aplicație-sandbox>/Library/Application Support/    - ios				//data/data/<nume-pachet-aplicație>/files/      - android
-
-
-
-				await _fileService.SaveTextToFile(fileName, randomNumber, username, password, "No" );
-
-				await DisplayAlert("Succes", $"Datele au fost salvate cu succes.", "OK");
-
-				//către MainPage
-				await Navigation.PushAsync(new MainPage());
-			}
-			catch (Exception ex)
-			{
-				await DisplayAlert("Eroare", $"Nu s-a putut salva fișierul: {ex.Message}", "OK");
-			}
-
-
-		
-
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-	}
-
 	}
 	
 	
@@ -139,22 +72,8 @@ public partial class SignInPage : ContentPage
 
 	private void EnterMethod_OnClicked(object? sender, EventArgs e)
 	{
-		 userIsSigningIn = !userIsSigningIn;
-		 if (userIsSigningIn)
-		 {
-			 signMessage.Text = "already have an account?";
-			 enterMethod.Text = "LOG IN";
-			 ButtonClicked.Text = "SIGN IN";
-
-		 }
-		 else
-		 {
-			 signMessage.Text = "new user?";
-			 enterMethod.Text = "SIGN IN";
-			 ButtonClicked.Text = "LOG IN";
-
-
-		 }
+		
+		
 		
 	}
 }

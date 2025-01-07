@@ -64,40 +64,21 @@
                         <Frame BackgroundColor="Transparent" HeightRequest="40" WidthRequest="40" CornerRadius="30" Padding="0" Margin="5">
                             <Image Source="https://e7.pngegg.com/pngimages/786/101/png-clipart-password-computer-icons-security-safety-icon-safety-icon-child-safety-lock-thumbnail.png" Aspect="AspectFill" Margin="0"/>
                         </Frame>
-                        <Entry x:Name="password3" Placeholder="Password" TextColor="Black" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="FillAndExpand" Margin="0,0,20,0"/>
+                        <Entry x:Name="phone" Placeholder="Phone" TextColor="Black" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="FillAndExpand" Margin="0,0,20,0"/>
                     </StackLayout>
                 </Frame>
-                
                 
                 <Frame BackgroundColor="Transparent" BorderColor="Black" Margin="0,15,0,0" Padding="0" HorizontalOptions="FillAndExpand" CornerRadius="30" >
                     <StackLayout Orientation="Horizontal">
                         <Frame BackgroundColor="Transparent" HeightRequest="40" WidthRequest="40" CornerRadius="30" Padding="0" Margin="5">
                             <Image Source="https://e7.pngegg.com/pngimages/786/101/png-clipart-password-computer-icons-security-safety-icon-safety-icon-child-safety-lock-thumbnail.png" Aspect="AspectFill" Margin="0"/>
                         </Frame>
-                        <Entry x:Name="password4" Placeholder="Password" TextColor="Black" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="FillAndExpand" Margin="0,0,20,0"/>
+                        <Entry x:Name="email" Placeholder="email" TextColor="Black" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="FillAndExpand" Margin="0,0,20,0"/>
                     </StackLayout>
                 </Frame>
-                
-                
-                
-                <Frame BackgroundColor="Transparent" BorderColor="Black" Margin="0,15,0,0" Padding="0" HorizontalOptions="FillAndExpand" CornerRadius="30" >
-                    <StackLayout Orientation="Horizontal">
-                        <Frame BackgroundColor="Transparent" HeightRequest="40" WidthRequest="40" CornerRadius="30" Padding="0" Margin="5">
-                            <Image Source="https://e7.pngegg.com/pngimages/786/101/png-clipart-password-computer-icons-security-safety-icon-safety-icon-child-safety-lock-thumbnail.png" Aspect="AspectFill" Margin="0"/>
-                        </Frame>
-                        <Entry x:Name="password5" Placeholder="Password" TextColor="Black" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="FillAndExpand" Margin="0,0,20,0"/>
-                    </StackLayout>
-                </Frame>
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
+
+               
+              
                 
                 
                 
@@ -113,8 +94,8 @@
                 <Button x:Name = "ButtonClicked" Clicked="ButtonClicked_OnClicked"  Text="LOG IN" BackgroundColor="DarkGreen" TextColor="White" FontAttributes="Bold" CornerRadius="30" WidthRequest="200" Margin="0,15,0,0" Command="{Binding LoginComand}"/>
 
                 <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" Margin="0,60,0,0" Padding="0">
-                    <Label x:Name="signMessage" Text="New User?" TextColor="DarkGray" FontSize="Small"/>
-                    <Button x:Name = "enterMethod" Clicked="EnterMethod_OnClicked" BackgroundColor="Transparent" Text="SIGN IN" TextColor="DarkRed"  />
+                    <Label x:Name="signMessage" Text="Have An Account?" TextColor="DarkGray" FontSize="Small"/>
+                    <Button x:Name = "enterMethod" Clicked="EnterMethod_OnClicked" BackgroundColor="Transparent" Text="LOG IN" TextColor="DarkRed"  />
 
                 </StackLayout>
 

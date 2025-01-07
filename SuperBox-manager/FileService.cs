@@ -7,7 +7,7 @@ namespace SuperBox_manager;
 public class FileService
 {
    
-    public async Task SaveTextToFile(string fileName, string uuid, string username, string password,string admin)
+    public async Task SaveTextToFile(string fileName, string uuid, string username, string password,string admin, string phone, string email)
     {
         // Obținem directorul de stocare al aplicației
         var folder = FileSystem.AppDataDirectory;
@@ -18,7 +18,7 @@ public class FileService
         try
         {
             // Scriem textul în fișier
-            string text = "!" + uuid + "@" + username + "#" + password + "$" + admin;
+            string text = "!" + uuid + "@" + username + "#" + password + "$" + admin + "&" + phone + "*" + email;
             await File.AppendAllTextAsync(filePath, text);
             Console.WriteLine($"Fișierul a fost salvat cu succes: {filePath}");
         }
@@ -38,14 +38,11 @@ public class FileService
         string readedPassword = "";
         // Creăm calea completă a fișierului
         var filePath = Path.Combine(folder, fileName);
-        Console.WriteLine("aici s a dat crucea");
 
         try
         {
             if (File.Exists(filePath))
             {
-                Console.WriteLine("aici s a dat crucea");
-
                 // Citim textul din fișier
                 string readedText = File.ReadAllText(filePath);
                 int lenght = readedText.Length;
