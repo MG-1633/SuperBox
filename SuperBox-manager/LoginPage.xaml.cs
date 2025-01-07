@@ -19,40 +19,10 @@ public partial class LoginPage : ContentPage
 		var random = new Random();
 		string randomNumber = random.Next(100,1000).ToString();
 		string filename = "credentials.txt";
-		
-		
-		
-		
-		
-	/*	try
-		{
-			string savedData = await _fileService.ReadTextFromFile(filename,username,password);
-			if (!string.IsNullOrWhiteSpace(savedData))
-			{
-				await DisplayAlert("Date Salvate", savedData, "OK");
-			}
-			else
-				await DisplayAlert("Info", "Nu există date salvate."
-					, "ОК");
-
-		}
-		catch (Exception ex)
-		{
-			await DisplayAlert("Erosre", $"Nu s a putut citi mesajul {ex.Message}", "ok");
-		}
-		
-		*/
-
-	if (!userIsSigningIn)
-	{
-
-		
-
+	
 		string savedData = await _fileService.ReadTextFromFile(filename, username, password);
 		if (savedData == "true")
 		{
-
-
 
 			if (!string.IsNullOrWhiteSpace(savedData))
 			{
@@ -63,121 +33,20 @@ public partial class LoginPage : ContentPage
 					, "ОК");
 
 
-
-			// Salvăm combinația utilizator/parolă într-un fișier
-			try
-			{
-				string fileName = "credentials.txt";
-				//<aplicație-sandbox>/Library/Application Support/      - ios
-
-				//data/data/<nume-pachet-aplicație>/files/      - android
-
-
-
-				//await _fileService.SaveTextToFile(fileName, randomNumber, username, password, "No" );
-
-				//await DisplayAlert("Succes", $"Datele au fost salvate în {fileName}.", "OK");
-
 				//către MainPage
 				await Navigation.PushAsync(new MainPage());
-			}
-			catch (Exception ex)
-			{
-				await DisplayAlert("Eroare", $"Nu s-a putut salva fișierul: {ex.Message}", "OK");
-			}
-
 
 		}
 		else
 		{
 			await DisplayAlert("Eșec", "Utilizator sau parolă incorecte.", "OK");
 		}
-
 	}
-	else
+	
+	private async void EnterMethod_OnClicked(object? sender, EventArgs e)
 	{
+		
+			 await Navigation.PushAsync(new SignInPage());
 
-
-
-
-		
-		
-		
-		
-	
-
-			// Salvăm combinația uuid/utilizator/parolă/admin?  într-un fișier
-			try
-			{
-				string fileName = "credentials.txt";				//<aplicație-sandbox>/Library/Application Support/    - ios				//data/data/<nume-pachet-aplicație>/files/      - android
-
-
-
-				await _fileService.SaveTextToFile(fileName, randomNumber, username, password, "No" );
-
-				await DisplayAlert("Succes", $"Datele au fost salvate cu succes.", "OK");
-
-				//către MainPage
-				await Navigation.PushAsync(new MainPage());
-			}
-			catch (Exception ex)
-			{
-				await DisplayAlert("Eroare", $"Nu s-a putut salva fișierul: {ex.Message}", "OK");
-			}
-
-
-		
-
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-	}
-
-	}
-	
-	
-	
-
-	private void EnterMethod_OnClicked(object? sender, EventArgs e)
-	{
-		 userIsSigningIn = !userIsSigningIn;
-		 if (userIsSigningIn)
-		 {
-			 signMessage.Text = "already have an account?";
-			 enterMethod.Text = "LOG IN";
-			 ButtonClicked.Text = "SIGN IN";
-
-		 }
-		 else
-		 {
-			 signMessage.Text = "new user?";
-			 enterMethod.Text = "SIGN IN";
-			 ButtonClicked.Text = "LOG IN";
-
-
-		 }
-		
 	}
 }
