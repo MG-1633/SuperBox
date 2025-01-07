@@ -1,6 +1,6 @@
 namespace SuperBox_manager;
 
-public class Comenzi
+public class Comanda
 {
     public string From { get; set; }
     public string To { get; set; }
@@ -8,14 +8,27 @@ public class Comenzi
     public User UserX { get; set; }
     
     public bool IsUrgent { get; set; }
+    public bool InPregress = true;
+    public Random random = new Random();
+
+    public string IdComanda;
     
     
 
-    public Comenzi(string from, string to , User getUser, bool isUrgent)
+    public Comanda(string from, string to , User getUser, bool isUrgent)
     {
         From = from;
         To = to;
         UserX = getUser;
         IsUrgent = isUrgent;
+        IdComanda = random.Next(100,1000).ToString();
+        
     }
+    
+    
+    
+    
+    
+    
+    
 }
