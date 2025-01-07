@@ -20,6 +20,36 @@
 
             SemanticScreenReader.Announce(CounterBtn.Text);
         }
+
+        private void ButtonBackToLogIn_OnClicked(object? sender, EventArgs e)
+        {
+           // throw new NotImplementedException();
+        }
+
+        private void ButtonMakeNewDelivery_OnClicked(object? sender, EventArgs e)
+        {
+           // throw new NotImplementedException();
+        }
+
+        private void ButtonMakeMeAdmin_OnClicked(object? sender, EventArgs e)
+        {
+           // throw new NotImplementedException();
+        }
+
+        private void ButtonShowPlacedOrders_OnClicked(object? sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+        }
+
+        private void ButtonShowIncomingOrders_OnClicked(object? sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+        }
+
+        private void ButtonAddSuperBox_OnClicked(object? sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+        }
     }
 
 }

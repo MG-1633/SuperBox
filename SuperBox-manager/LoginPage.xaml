@@ -5,6 +5,9 @@
              Title="LoginPage"
              Shell.NavBarIsVisible="False"
              Shell.FlyoutBehavior="Disabled">
+            <Shell.BackButtonBehavior>
+                <BackButtonBehavior IsVisible="False" IsEnabled="False" />
+            </Shell.BackButtonBehavior>
 
 
 
@@ -62,11 +65,12 @@
                     <Label Text="Forgot Password" TextColor="DarkRed" FontAttributes="Bold" HorizontalOptions="EndAndExpand" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" Margin="50,0,0,0"/>
                 </StackLayout>
 
-                <Button x:Name = "ButtonClicked" Clicked="ButtonClicked_OnClicked"  Text="SIGN IN" BackgroundColor="DarkGreen" TextColor="White" FontAttributes="Bold" CornerRadius="30" WidthRequest="200" Margin="0,15,0,0" Command="{Binding LoginComand}"/>
+                <Button x:Name = "ButtonClicked" Clicked="ButtonClicked_OnClicked"  Text="LOG IN" BackgroundColor="DarkGreen" TextColor="White" FontAttributes="Bold" CornerRadius="30" WidthRequest="200" Margin="0,15,0,0" Command="{Binding LoginComand}"/>
 
                 <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" Margin="0,60,0,0" Padding="0">
-                    <Label Text="New User?" TextColor="DarkGray" FontSize="Small"/>
-                    <Label Text="Sign Up" TextColor="DarkRed" FontAttributes="Bold" FontSize="Small"/>
+                    <Label x:Name="signMessage" Text="New User?" TextColor="DarkGray" FontSize="Small"/>
+                    <Button x:Name = "enterMethod" Clicked="EnterMethod_OnClicked" BackgroundColor="Transparent" Text="SIGN IN" TextColor="DarkRed"  />
+
                 </StackLayout>
 
             </StackLayout>

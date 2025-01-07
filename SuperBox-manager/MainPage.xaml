@@ -2,6 +2,9 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="SuperBox_manager.MainPage">
+    <Shell.BackButtonBehavior>
+        <BackButtonBehavior IsEnabled="False" IsVisible="False"/>
+    </Shell.BackButtonBehavior>
 
     <ScrollView>
         <VerticalStackLayout
@@ -24,11 +27,46 @@
                 SemanticProperties.HeadingLevel="Level2"
                 SemanticProperties.Description="Welcome to dot net Multi platform App U I" />
 
+            
             <Button
                 x:Name="CounterBtn"
                 Text="Click me" 
                 SemanticProperties.Hint="Counts the number of times you click"
                 Clicked="OnCounterClicked"
+                HorizontalOptions="Fill" />
+            
+            
+            
+            
+            <Button
+                x:Name="ButtonBackToLogIn"
+                Text="Back To LogIn" 
+                Clicked="ButtonBackToLogIn_OnClicked"
+                HorizontalOptions="Fill" />
+            <Button
+                x:Name="ButtonMakeNewDelivery"
+                Text="Make New Delivery" 
+                Clicked="ButtonMakeNewDelivery_OnClicked"
+                HorizontalOptions="Fill" />
+            <Button
+                x:Name="ButtonMakeMeAdmin"
+                Text="Make Me Admin" 
+                Clicked="ButtonMakeMeAdmin_OnClicked"
+                HorizontalOptions="Fill" />
+            <Button
+                x:Name="ButtonShowPlacedOrders"
+                Text="Show Placed Orders" 
+                Clicked="ButtonShowPlacedOrders_OnClicked"
+                HorizontalOptions="Fill" />
+            <Button
+                x:Name="ButtonShowIncomingOrders"
+                Text="Show Incoming Orders" 
+                Clicked="ButtonShowIncomingOrders_OnClicked"
+                HorizontalOptions="Fill" />
+            <Button
+                x:Name="ButtonAddSuperBox"
+                Text="Add SuperBox" 
+                Clicked="ButtonAddSuperBox_OnClicked"
                 HorizontalOptions="Fill" />
         </VerticalStackLayout>
     </ScrollView>
