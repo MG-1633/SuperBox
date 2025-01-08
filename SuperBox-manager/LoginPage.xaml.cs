@@ -15,23 +15,22 @@ public partial class LoginPage : ContentPage
 	{
 		string username = this.username.Text; 
 		string password = this.password.Text; 
-		string fileName = "credentials.txt";
+		string fileName = "credentialsTest.txt";
 	
-		string savedData = await _fileService.ReadTextFromFile(fileName, username, password);
-		if (savedData == "true")
+		User savedData = await _fileService.ReadTextFromFile(fileName, username, password);
+		if (savedData != null)
 		{
 
-			if (string.IsNullOrWhiteSpace(savedData))
-			{
-				await DisplayAlert("Info", "Nu există date salvate. Inregistreaza-te prima data.", "ОК");
-			}
+			
+			
 			
 				//catre MainPage
-				await Navigation.PushAsync(new MainPage());
+				await Navigation.PushAsync(new MainPage(savedData));
 
 		}
 		else
 		{
+
 			await DisplayAlert("Eșec", "Utilizator sau parolă incorecte.", "OK");
 		}
 	}

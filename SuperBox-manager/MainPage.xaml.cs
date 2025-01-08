@@ -3,10 +3,11 @@
     public partial class MainPage : ContentPage
     {
         int count = 0;
-
-        public MainPage()
+        public User Uuser { get; set; }
+        public MainPage(User user)
         {
             InitializeComponent();
+            Uuser = user;
         }
 
         private void OnCounterClicked(object sender, EventArgs e)
@@ -19,16 +20,17 @@
                 CounterBtn.Text = $"Clicked {count} times";
 
             SemanticScreenReader.Announce(CounterBtn.Text);
+            
         }
 
-        private void ButtonBackToLogIn_OnClicked(object? sender, EventArgs e)
+        private async void ButtonBackToLogIn_OnClicked(object? sender, EventArgs e)
         {
-           // throw new NotImplementedException();
+            await Navigation.PushAsync(new LoginPage());
         }
 
-        private void ButtonMakeNewDelivery_OnClicked(object? sender, EventArgs e)
+        private async void ButtonMakeNewDelivery_OnClicked(object? sender, EventArgs e)
         {
-           // throw new NotImplementedException();
+            await Navigation.PushAsync(new NewDelivery(Uuser));
         }
 
         private void ButtonMakeMeAdmin_OnClicked(object? sender, EventArgs e)
@@ -36,9 +38,10 @@
            // throw new NotImplementedException();
         }
 
-        private void ButtonShowPlacedOrders_OnClicked(object? sender, EventArgs e)
+        private async void ButtonShowPlacedOrders_OnClicked(object? sender, EventArgs e)
         {
-            //throw new NotImplementedException();
+            await Navigation.PushAsync(new PlacedOrders(Uuser));
+
         }
 
         private void ButtonShowIncomingOrders_OnClicked(object? sender, EventArgs e)

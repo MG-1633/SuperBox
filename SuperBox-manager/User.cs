@@ -4,15 +4,20 @@ public class User
 {
     public string Username { get; set; }
     public string Password { get; set; }
-    public string uuid { get; set; }
-    public string admin { get; set; }
+    public string Uuid { get; set; }
+    public string Admin { get; set; }
+    public string Email { get; set; }
+    public string Phone { get; set; }
 
-    public User(string username, string password, string uuid, string admin)
+    public User(string username, string password, string uuid, string admin , string email, string phone)
     {
         Username = username;
         Password = password;
-        this.uuid = uuid;
-        this.admin = admin;
+        Uuid = uuid;
+        Admin = admin;
+        Email = email;
+        Phone = phone;
+        
     }
 
     

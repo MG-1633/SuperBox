@@ -6,32 +6,34 @@ using System.Threading.Tasks;
 
 namespace SuperBox_manager
 {
+    
+    /*
     internal class OrderManager
     {
         
-            private List<Order> orders;
+            private List<Comenzi> orders;
             private int nextOrderId;
 
             public OrderManager()
             {
-                orders = new List<Order>();
+                orders = new List<Comenzi>();
                 nextOrderId = 1;
             }
 
             public void PlaceOrder(User sender, User receiver, SuperBox source, SuperBox destination, bool isUrgent)
             {
-                var order = new Order(nextOrderId++, sender, receiver, source, destination, isUrgent);
+                var order = new Comenzi(nextOrderId++, sender, receiver, source, destination, isUrgent);
                 orders.Add(order);
                 source.OutgoingOrders.Add(order);
                 destination.IncomingOrders.Add(order);
             }
 
-            public List<Order> GetOrdersBySender(User sender)
+            public List<Comenzi> GetOrdersBySender(User sender)
             {
                 return orders.Where(o => o.Sender == sender).ToList();
             }
 
-            public List<Order> GetOrdersByReceiver(User receiver)
+            public List<Comenzi> GetOrdersByReceiver(User receiver)
             {
                 return orders.Where(o => o.Receiver == receiver).ToList();
             }
@@ -53,4 +55,6 @@ namespace SuperBox_manager
         
 
     }
+    
+    */
 }
