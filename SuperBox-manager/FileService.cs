@@ -104,4 +104,32 @@ public class FileService
 
         
     }
+    public async Task<bool> UserExistsInFile(string fileName, string username)
+    {
+        try
+        {
+            // Citim conținutul fișierului
+            if (File.Exists(fileName))
+            {
+                string[] lines = await File.ReadAllLinesAsync(fileName);
+
+                // Verificăm dacă există un utilizator cu același nume
+                foreach (string line in lines)
+                {
+                    // Presupunem formatul: uuid,username,password,admin,email,phone
+                    string[] parts = line.Split(',');
+                    if (parts.Length > 1 && parts[1] == username)
+                    {
+                        return true;
+                    }
+                }
+            }
+        }
+        catch (Exception)
+        {
+            // Gestionăm erorile (opțional, logare)
+        }
+
+        return false; // Utilizatorul nu există
+    }
 }
