@@ -357,6 +357,4 @@ public class FileService
 
         return false; // Utilizatorul nu există
     }
-
-
 }
