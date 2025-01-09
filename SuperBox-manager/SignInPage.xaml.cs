@@ -1,4 +1,4 @@
-/*using System.Net.Mime;
+using System.Net.Mime;
 
 namespace SuperBox_manager;
 
@@ -53,7 +53,8 @@ public partial class SignInPage : ContentPage
 	}
 
 }
-*/
+
+/*
 using System.Net.Mime;
 
 namespace SuperBox_manager;
@@ -110,3 +111,4 @@ public partial class SignInPage : ContentPage
 
 
 }
+*/
