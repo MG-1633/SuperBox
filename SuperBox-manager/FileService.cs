@@ -355,6 +355,5 @@ public class FileService
             // Gestionăm erorile (opțional, logare)
         }
 
-        return false; // Utilizatorul nu există
     }
 }
