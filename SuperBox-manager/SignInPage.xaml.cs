@@ -27,16 +27,28 @@ public partial class SignInPage : ContentPage
 		try
 		{
 
-			await _fileService.SaveTextToFile(fileName, randomNumber, username, password, "No", phone, email);
+			
 
-			await DisplayAlert("Succes", $"Datele au fost salvate cu succes.", "OK");
+            // Verificăm dacă utilizatorul există deja
+            bool userExists = await _fileService.UserExistsInFile(fileName, username);
 
-			//către MainPage
+            if (userExists)
+            {
+                await DisplayAlert("Eroare", "Numele de utilizator există deja. Vă rugăm să alegeți alt nume.", "OK");
+                return;
+            }
+
+            await _fileService.SaveTextToFile(fileName, randomNumber, username, password, "true", phone, email);
+
+            await DisplayAlert("Succes", $"Datele au fost salvate cu succes.", "OK");
+
+			//către LoginPage
 			await Navigation.PushAsync(new LoginPage());
 		}
 		catch (Exception ex)
 		{
 			await DisplayAlert("Eroare", $"Nu s-a putut salva fișierul: {ex.Message}", "OK");
+            
 		}
 
 	}

@@ -2,8 +2,12 @@ using System.Net.Mime;
 
 namespace SuperBox_manager;
 
+
+
 public partial class LoginPage : ContentPage
 {
+
+
 	private readonly FileService _fileService;
 	public LoginPage()
 	{
@@ -11,7 +15,8 @@ public partial class LoginPage : ContentPage
 		_fileService = new FileService(); // Instanțierea serviciului
 	}
 
-	private async void ButtonClicked_OnClicked(object sender, EventArgs e)
+
+    private async void ButtonClicked_OnClicked(object sender, EventArgs e)
 	{
 		string username = this.username.Text; 
 		string password = this.password.Text; 
@@ -21,11 +26,16 @@ public partial class LoginPage : ContentPage
 		if (savedData != null)
 		{
 
-			
-			
-			
-				//catre MainPage
-				await Navigation.PushAsync(new MainPage(savedData));
+
+
+
+			//catre MainPage
+			if (savedData.Admin == "true")
+			{
+                await Navigation.PushAsync(new Home(savedData));
+
+            }
+            else await Navigation.PushAsync(new MainPage(savedData));
 
 		}
 		else
