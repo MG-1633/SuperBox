@@ -34,24 +34,15 @@
                 SemanticProperties.Hint="Counts the number of times you click"
                 Clicked="OnCounterClicked"
                 HorizontalOptions="Fill" />
-            
-            
-            
-            
-            <Button
-                x:Name="ButtonBackToLogIn"
-                Text="Back To LogIn" 
-                Clicked="ButtonBackToLogIn_OnClicked"
-                HorizontalOptions="Fill" />
+
+
+
+
+
             <Button
                 x:Name="ButtonMakeNewDelivery"
                 Text="Make New Delivery" 
                 Clicked="ButtonMakeNewDelivery_OnClicked"
-                HorizontalOptions="Fill" />
-            <Button
-                x:Name="ButtonMakeMeAdmin"
-                Text="Make Me Admin" 
-                Clicked="ButtonMakeMeAdmin_OnClicked"
                 HorizontalOptions="Fill" />
             <Button
                 x:Name="ButtonShowPlacedOrders"
@@ -64,10 +55,16 @@
                 Clicked="ButtonShowIncomingOrders_OnClicked"
                 HorizontalOptions="Fill" />
             <Button
-                x:Name="ButtonAddSuperBox"
-                Text="Add SuperBox" 
-                Clicked="ButtonAddSuperBox_OnClicked"
+                x:Name="ButtonMakeMeAdmin"
+                Text="Make Me Admin" 
+                Clicked="ButtonMakeMeAdmin_OnClicked"
                 HorizontalOptions="Fill" />
+            <Button
+                x:Name="ButtonBackToLogIn"
+                Text="Back To LogIn" 
+                Clicked="ButtonBackToLogIn_OnClicked"
+                HorizontalOptions="Fill" /> 
+            
         </VerticalStackLayout>
     </ScrollView>
 
