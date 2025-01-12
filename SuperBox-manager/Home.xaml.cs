@@ -48,4 +48,16 @@ public partial class Home : ContentPage
     {
         //throw new NotImplementedException();
     }
+
+    private void ButtonSeeAdminRequests_OnClicked(object sender, EventArgs e)
+    {
+        // Your event handling logic here
+      
+    }
+
+    private void ButtonShowSuperBox_OnClicked(object sender, EventArgs e)
+    {
+        // Add your event handling logic here
+        
+    }
 }

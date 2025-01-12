@@ -21,8 +21,10 @@ public partial class LoginPage : ContentPage
 		string username = this.username.Text; 
 		string password = this.password.Text; 
 		string fileName = "credentialsTest.txt";
-	
-		User savedData = await _fileService.ReadTextFromFile(fileName, username, password);
+
+		
+
+        User savedData = await _fileService.ReadTextFromFile(fileName, username, password);
 		if (savedData != null)
 		{
 

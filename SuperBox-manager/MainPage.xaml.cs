@@ -4,11 +4,16 @@
     {
         int count = 0;
         public User Uuser { get; set; }
+
         public MainPage(User user)
         {
             InitializeComponent();
             Uuser = user;
+
+            BindingContext = Uuser;
         }
+
+       
 
         private void OnCounterClicked(object sender, EventArgs e)
         {
