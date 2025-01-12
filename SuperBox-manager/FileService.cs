@@ -393,7 +393,7 @@ public class FileService
         var filePath = Path.Combine(folder, fileName);
         try
         {
-            string text = "|" + superbox.Id + "#" + superbox.location; 
+            string text = "|" + superbox.Id + "#" + superbox.Location; 
             await File.AppendAllTextAsync(filePath, text);
             Console.WriteLine($"SuperBox-ul a fost salvat cu succes: {filePath}");
         }
