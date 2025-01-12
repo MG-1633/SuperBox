@@ -385,5 +385,24 @@ public class FileService
             Console.WriteLine("aici sa dat crucea");
         }
         return false;
+
     }
+    public async Task SaveSuperBox(string fileName, SuperBox superbox)
+    {
+        var folder = FileSystem.AppDataDirectory;
+        var filePath = Path.Combine(folder, fileName);
+        try
+        {
+            string text = "|" + superbox.Id + "#" + superbox.location; 
+            await File.AppendAllTextAsync(filePath, text);
+            Console.WriteLine($"SuperBox-ul a fost salvat cu succes: {filePath}");
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"A apărut o eroare la salvare: {ex.Message}");
+            throw;
+        }
+
+    }
+
 }
