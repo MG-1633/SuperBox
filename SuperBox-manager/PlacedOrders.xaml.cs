@@ -11,6 +11,7 @@ public partial class PlacedOrders : ContentPage
 {
     private readonly FileService _fileService;
     public User UserX;
+    public List<Comanda> Comenzi = new List<Comanda>();
     public PlacedOrders(User user)
     {
         InitializeComponent();
@@ -22,20 +23,18 @@ public partial class PlacedOrders : ContentPage
     private async Task InitializeAsync()
     {
         
-        string fileNameForId = "MyOrdersId2" + UserX.Uuid + ".txt";
-        string fileNameForDelivery = "Delivery2.txt";
-
-        String[] MyDeliveryIds = await _fileService.ReadMyDeliveryId(fileNameForId);
-        foreach (var VARIABLE in MyDeliveryIds)
+        string fileNameForDelivery = "Delivery3.txt";
+        Comenzi = await _fileService.ReadDelivery(fileNameForDelivery, UserX);
+        foreach (var VARIABLE in Comenzi)
         {
-            Comanda comanda = await _fileService.ReadDeliveryById(fileNameForDelivery, VARIABLE, UserX);
+            
             Console.WriteLine("----" + VARIABLE);
-            OrderText.Text += comanda.IdComanda + " " + comanda.From + " " + comanda.To + " \n";
+            if (VARIABLE.From != "")
+            {
+                OrderText.Text += VARIABLE.UserX.Username + " " + VARIABLE.To + " " + VARIABLE.To + " \n";
+            }
         }
-        foreach (var VARIABLE in MyDeliveryIds)
-        {
-            Console.WriteLine("----" + VARIABLE);
-        }
+       
         
         
         

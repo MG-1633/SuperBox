@@ -9,6 +9,10 @@ public partial class AddSuperBox : ContentPage
 
         InitializeComponent();
         _fileService = new FileService();
+        SuperBox = superBox;
+    }
+    public AddSuperBox()
+    {
 
     }
     public AddSuperBox()
@@ -24,9 +28,6 @@ public partial class AddSuperBox : ContentPage
     private async void ButtonPlace_OnClicked(object? sender, EventArgs e)
     {
 
-        // string IdComanda = random.Next(100, 999).ToString();
-        // string fileNameForId = "MyOrdersId2" + Uuser.Uuid + ".txt";
-        string fileNameForSuperBox = "NewSuperBox.txt";
 
         try
         {
