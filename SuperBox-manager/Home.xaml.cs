@@ -44,9 +44,9 @@ public partial class Home : ContentPage
         //throw new NotImplementedException();
     }
 
-    private void ButtonAddSuperBox_OnClicked(object? sender, EventArgs e)
+    private async void ButtonAddSuperBox_OnClicked(object? sender, EventArgs e)
     {
-        //throw new NotImplementedException();
+        await Navigation.PushAsync(new AddSuperBox());
     }
 
     private void ButtonSeeAdminRequests_OnClicked(object sender, EventArgs e)
