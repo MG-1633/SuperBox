@@ -468,7 +468,7 @@ public class FileService
         var filePath = Path.Combine(folder, fileName);
         try
         {
-            string text = "|" + superbox.Id + "#" + superbox.Location; 
+            string text = "|" + superbox.Id + "#" + superbox.Location + "/"; 
             await File.AppendAllTextAsync(filePath, text);
             Console.WriteLine($"SuperBox-ul a fost salvat cu succes: {filePath}");
         }
@@ -479,5 +479,88 @@ public class FileService
         }
 
     }
+
+    public async Task<List<SuperBox>> ReadSuperBox(string fileName)
+    {
+        
+        var folder = FileSystem.AppDataDirectory;
+        var filePath = Path.Combine(folder, fileName);
+
+        
+       
+        
+           
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        try
+        {
+
+            if (File.Exists(filePath))
+            {
+                string readedText = File.ReadAllText(filePath);
+                int lenght = readedText.Length;
+                List<SuperBox> superboxes = new List<SuperBox>();
+
+
+
+                for (int i = 0; i < lenght; i++)
+                {
+                    if (readedText[i] == '|')
+                    {
+                        string readedId = "";
+                        string readedLocation = "";
+                        int l = i;
+                        l++;
+                        while (readedText[l] != '#')
+                        {
+                            readedId = readedId + readedText[l];
+                            l++;
+
+                        }
+                        l++;
+                        while (readedText[l] != '/')
+                        {
+                            readedLocation = readedLocation + readedText[l];
+                            l++;
+                        }
+                        SuperBox superbox = new SuperBox(readedId, readedLocation);
+                        superboxes.Add(superbox);
+                        
+
+                    }
+                }
+
+                return superboxes;
+            }
+
+        return null;
+
+
+
+
+
+
+
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            throw;
+        }
+        
+        
+    }
+    
+    
+    
+    
 
 }

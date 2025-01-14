@@ -15,14 +15,14 @@ public partial class AddSuperBox : ContentPage
     }
 
 
-    int i = 0;
+    string i = "";
     private async void ButtonPlace_OnClicked(object? sender, EventArgs e)
     {
         string fileNameForSuperBox = "AllSperBoxes.txt";
 
         try
         {
-            i++;
+            i = i + "1";
 
             string locatie = Field.Text;
 
