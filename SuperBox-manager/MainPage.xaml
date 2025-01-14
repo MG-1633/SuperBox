@@ -34,13 +34,14 @@
 
 
             <Label Text="Bun venit," 
-               FontSize="24" 
-               FontAttributes="Bold" 
-               HorizontalOptions="Center" />
+               FontSize="20"  
+               HorizontalOptions="Fill" />
             <Label Text="" 
                    x:Name="userName"
-               FontSize="20" 
-               HorizontalOptions="Center" />
+               FontSize="34" 
+               FontAttributes="Bold"
+               HorizontalOptions="Center"
+                   Margin="0,30,0,70"/>
 
             <Button
                 x:Name="CounterBtn"

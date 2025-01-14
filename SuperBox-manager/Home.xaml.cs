@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static System.Net.Mime.MediaTypeNames;
+using System.Xml.Linq;
 //using Windows.System;
 
 namespace SuperBox_manager;
@@ -15,6 +17,7 @@ public partial class Home : ContentPage
     {
         InitializeComponent();
         Uuser = user;
+        userName.Text = Uuser.Username;
     }
     
 
