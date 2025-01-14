@@ -24,17 +24,16 @@ namespace SuperBox_manager
         private async void ButtonPlace_OnClicked(object? sender, EventArgs e)
         {
             
-           // string IdComanda = random.Next(100, 999).ToString();
-            string fileNameForId = "MyOrdersId2" + Uuser.Uuid + ".txt";
             string fileNameForDelivery = "Delivery2.txt";
 
             try
             {
                 string from = fromField.Text;
                 string to = toField.Text;
-                Comanda comanda = new Comanda(from, to, Uuser, isUrgentToggle);
+                string reciver = reciverField.Text;
                 
-                await _fileService.SaveMyDeliverysId(fileNameForId, comanda.IdComanda);
+                Comanda comanda = new Comanda(from, to, Uuser, isUrgentToggle, reciver,Uuser.Username);
+                
                 await _fileService.SaveDelivery(fileNameForDelivery,comanda);
                 await DisplayAlert("Succes", $"Datele au fost salvate cu succes.", "OK");
 

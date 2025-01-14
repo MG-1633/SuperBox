@@ -13,7 +13,7 @@ public class FileService
         var filePath = Path.Combine(folder, fileName);
         try
         {
-            string text = "|" + comanda.IdComanda + "#" + comanda.From + "!" + comanda.To + "$" + comanda.UserX.Uuid + "&" + comanda.IsUrgent + "*" + comanda.InPregress + "/";
+            string text = "|" + comanda.IdComanda + "#" + comanda.From + "!" + comanda.To + "$" + comanda.UserX.Username + "&" + comanda.IsUrgent + "*" + comanda.Reciver +  ")" +  comanda.InPregress + "/";
             await File.AppendAllTextAsync(filePath, text);
             Console.WriteLine($"Comanda a fost salvata cu succes: {filePath}");
         }
@@ -68,7 +68,7 @@ public class FileService
 
 
 
-    public async Task<Comanda> ReadDeliveryById(string fileName, string idComanda, User user)
+    public async Task<List<Comanda>> ReadDelivery(string fileName,User user)
     {
         var folder = FileSystem.AppDataDirectory;
         var filePath = Path.Combine(folder, fileName);
@@ -84,14 +84,14 @@ public class FileService
                 string ReadedIdComanda = "";
                 string ReadedFrom = "";
                 string ReadedTo = "";
-                string ReadedUuid = "";
+                string ReadedUsername = "";
 
                 bool ReadedIsUrgent = false;
                 string readedIsUrgent = "";
                 bool ReadedInPregress = false;
                 string readedInPregress = "";
-
-
+                string readedReciver = "";
+                List<Comanda> comenzi = new List<Comanda>();
 
 
                 int j = 0;
@@ -120,47 +120,110 @@ public class FileService
 
                     }
 
-                    if (ReadedIdComanda == idComanda)
+                    if (readedText[i] == '#')
                     {
-                        Console.WriteLine("xxxx");
-
-
-
+                        j = i;
+                        ReadedFrom = "";
                         j++;
                         while (readedText[j] != '!')
                         {
                             ReadedFrom = ReadedFrom + readedText[j];
                             j++;
+
                         }
-                        Console.WriteLine(ReadedFrom + "xxxx");
+                        
+                    }
+
+                    if (readedText[i] == '!')
+                    {
+                        j = i;
+                        ReadedTo = "";
                         j++;
                         while (readedText[j] != '$')
                         {
                             ReadedTo = ReadedTo + readedText[j];
                             j++;
+
                         }
+                        
+                    }
+
+                    if (readedText[i] == '$')
+                    {
+                        j = i;
+                        ReadedUsername = "";
                         j++;
                         while (readedText[j] != '&')
                         {
-                            ReadedUuid = ReadedUuid + readedText[j];
+                            ReadedUsername = ReadedUsername + readedText[j];
                             j++;
-                        }
 
+                        }
+                        
+                    }
+
+                    if (readedText[i] == '&')
+                    {
+                        j = i;
+                        ReadedUsername = "";
                         j++;
                         while (readedText[j] != '*')
                         {
                             readedIsUrgent = readedIsUrgent + readedText[j];
                             j++;
+
                         }
+                        
+                    }
+                    if (readedText[i] == '&')
+                    {
+                        j = i;
+                        ReadedUsername = "";
+                        j++;
+                        while (readedText[j] != '*')
+                        {
+                            readedIsUrgent = readedIsUrgent + readedText[j];
+                            j++;
+
+                        }
+                        
+                    }
                         if (readedIsUrgent == "true")
                             ReadedIsUrgent = true;
+                        j++;
+                        
+                        
+                        
+                    if (readedText[i] == '*')
+                    { 
+                        j = i; 
+                        readedReciver = "";
+                        j++;
+                        while (readedText[j] != ')')
+                        {
+                            readedReciver = readedReciver + readedText[j];
+                            j++;
 
+                        }
+                        
+                    } 
+                    
+                    
+                        
+                        
+                    if (readedText[i] == ')')
+                    {
+                        j = i;
+                        readedInPregress = "";
                         j++;
                         while (readedText[j] != '/')
                         {
                             readedInPregress = readedInPregress + readedText[j];
                             j++;
+
                         }
+                        
+                    } 
                         if (readedInPregress == "true")
                             ReadedInPregress = true;
 
@@ -169,14 +232,16 @@ public class FileService
 
 
 
+                        Comanda comanda = new Comanda(ReadedFrom, ReadedTo, user, ReadedIsUrgent, readedReciver, ReadedUsername);
+                        comenzi.Add(comanda);
+                        
 
-                        Comanda comanda = new Comanda(ReadedFrom, ReadedTo, user, ReadedIsUrgent);
-                        return comanda;
 
 
-
-                    }
+                    
                 }
+
+                return comenzi;
 
             }
             else

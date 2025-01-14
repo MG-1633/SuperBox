@@ -4,33 +4,33 @@ public partial class AddSuperBox : ContentPage
 {
     public User Uuser { get; set; }
     private readonly FileService _fileService;
-    public AddSuperBox(User user)
+    public SuperBox SuperBox { get; set; }
+    
+    string fileNameForSuperBox = "NewSuperBox.txt";
+
+    public AddSuperBox(SuperBox superBox)
     {
 
         InitializeComponent();
         _fileService = new FileService();
+        SuperBox = superBox;
+    }
+    public AddSuperBox()
+    {
 
-        Uuser = user;
+        InitializeComponent();
+        _fileService = new FileService();
     }
 
    
-    Random random = new Random();
     private async void ButtonPlace_OnClicked(object? sender, EventArgs e)
     {
 
-        // string IdComanda = random.Next(100, 999).ToString();
-        // string fileNameForId = "MyOrdersId2" + Uuser.Uuid + ".txt";
-        string fileNameForSuperBox = "NewSuperBox.txt";
 
         try
         {
-           // string from = fromField.Text;
-            //string to = toField.Text;
-           // SuperBox superbox = new SuperBox(random, location);
-
-            // await _fileService.SaveMyDeliverysId(fileNameForId, comanda.IdComanda);
-           // await _fileService.SaveSuperBox(fileNameForSuperBox, superbox);
-           // await DisplayAlert("Succes", $"Datele au fost salvate cu succes.", "OK");
+            await _fileService.SaveSuperBox(fileNameForSuperBox, SuperBox);
+            await DisplayAlert("Succes", $"SuperBoxul au fost salvate cu succes.", "OK");
 
         }
         catch (Exception exception)
