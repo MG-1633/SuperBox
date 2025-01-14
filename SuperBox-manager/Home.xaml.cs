@@ -57,10 +57,10 @@ public partial class Home : ContentPage
         // Your event handling logic here
       
     }
+    
 
-    private void ButtonShowSuperBox_OnClicked(object sender, EventArgs e)
+    private async void ButtonShowSuperBox_OnClicked(object? sender, EventArgs e)
     {
-        // Add your event handling logic here
-        
+        await Navigation.PushAsync(new SuperBoxList());
     }
 }
