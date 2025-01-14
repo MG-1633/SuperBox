@@ -531,7 +531,8 @@ public class FileService
                             readedLocation = readedLocation + readedText[l];
                             l++;
                         }
-                        SuperBox superbox = new SuperBox(readedId, readedLocation);
+                        int id = Int32.Parse(readedId);
+                        SuperBox superbox = new SuperBox(id, readedLocation);
                         superboxes.Add(superbox);
                         
 

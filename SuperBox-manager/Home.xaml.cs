@@ -58,6 +58,6 @@ public partial class Home : ContentPage
 
     private async void ButtonShowSuperBox_OnClicked(object? sender, EventArgs e)
     {
-        await Navigation.PushAsync(new AddSuperBox());
+        await Navigation.PushAsync(new SuperBoxList());
     }
 }
