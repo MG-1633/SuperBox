@@ -4,17 +4,8 @@ public partial class AddSuperBox : ContentPage
 {
     public SuperBox superbox { get; set; }
     private readonly FileService _fileService;
-    public AddSuperBox(SuperBox superbox)
-    {
+  
 
-        InitializeComponent();
-        _fileService = new FileService();
-        SuperBox = superBox;
-    }
-    public AddSuperBox()
-    {
-
-    }
     public AddSuperBox()
     {
 
@@ -27,7 +18,7 @@ public partial class AddSuperBox : ContentPage
     int i = 0;
     private async void ButtonPlace_OnClicked(object? sender, EventArgs e)
     {
-
+        string fileNameForSuperBox = "AllSperBoxes.txt";
 
         try
         {
