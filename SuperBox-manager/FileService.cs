@@ -13,7 +13,7 @@ public class FileService
         var filePath = Path.Combine(folder, fileName);
         try
         {
-            string text = "|" + comanda.IdComanda + "#" + comanda.From + "!" + comanda.To + "$" + comanda.UserX.Username + "&" + comanda.IsUrgent + "*" + comanda.Reciver +  ")" +  comanda.InPregress + "/";
+            string text = "|" + comanda.IdComanda + "#" + comanda.From + "!" + comanda.To + "$" + comanda.UserX.Username + "&" + comanda.IsUrgent + "*" + comanda.Reciver +  ")" + comanda.Sender + "(" + comanda.InPregress + "/";
             await File.AppendAllTextAsync(filePath, text);
             Console.WriteLine($"Comanda a fost salvata cu succes: {filePath}");
         }
@@ -91,6 +91,7 @@ public class FileService
                 bool ReadedInPregress = false;
                 string readedInPregress = "";
                 string readedReciver = "";
+                string readedSender = "";
                 List<Comanda> comenzi = new List<Comanda>();
 
 
@@ -98,14 +99,12 @@ public class FileService
                 for (int i = 0; i < lenght; i++)
                 {
 
-                    ReadedIdComanda = "";
-                    ReadedFrom = "";
-                    ReadedTo = "";
+                    
 
                     if (readedText[i] == '|')
                     {
                         j = i;
-                        ReadedIdComanda = "";
+                       
                         j++;
                         while (readedText[j] != '#')
                         {
@@ -116,14 +115,12 @@ public class FileService
 
                         Console.WriteLine(ReadedIdComanda + "xxxx");
 
-
-
                     }
 
                     if (readedText[i] == '#')
                     {
                         j = i;
-                        ReadedFrom = "";
+                        
                         j++;
                         while (readedText[j] != '!')
                         {
@@ -133,11 +130,11 @@ public class FileService
                         }
                         
                     }
-
+                    Console.WriteLine(ReadedIdComanda + "xxxx");
                     if (readedText[i] == '!')
                     {
                         j = i;
-                        ReadedTo = "";
+                        
                         j++;
                         while (readedText[j] != '$')
                         {
@@ -147,11 +144,11 @@ public class FileService
                         }
                         
                     }
-
+                    Console.WriteLine(ReadedTo + "xxxxxxxxxxxxxxxxxxxx");
                     if (readedText[i] == '$')
                     {
                         j = i;
-                        ReadedUsername = "";
+                       
                         j++;
                         while (readedText[j] != '&')
                         {
@@ -161,11 +158,11 @@ public class FileService
                         }
                         
                     }
-
+                    Console.WriteLine(ReadedIdComanda + "xxxx");
                     if (readedText[i] == '&')
                     {
                         j = i;
-                        ReadedUsername = "";
+                       
                         j++;
                         while (readedText[j] != '*')
                         {
@@ -175,29 +172,13 @@ public class FileService
                         }
                         
                     }
+                   
+
+                    
                     if (readedText[i] == '&')
                     {
                         j = i;
-                        ReadedUsername = "";
-                        j++;
-                        while (readedText[j] != '*')
-                        {
-                            readedIsUrgent = readedIsUrgent + readedText[j];
-                            j++;
-
-                        }
-                        
-                    }
-                        if (readedIsUrgent == "true")
-                            ReadedIsUrgent = true;
-                        j++;
-                        
-                        
-                        
-                    if (readedText[i] == '*')
-                    { 
-                        j = i; 
-                        readedReciver = "";
+                       
                         j++;
                         while (readedText[j] != ')')
                         {
@@ -206,15 +187,32 @@ public class FileService
 
                         }
                         
-                    } 
-                    
-                    
+                    }
+                    Console.WriteLine(ReadedIdComanda + "xxxx");
+                        
                         
                         
                     if (readedText[i] == ')')
+                    { 
+                        j = i; 
+                       
+                        j++;
+                        while (readedText[j] != '(')
+                        {
+                            readedSender = readedSender + readedText[j];
+                            j++;
+
+                        }
+                        
+                    } 
+                    
+                    Console.WriteLine(ReadedIdComanda + "xxxx");
+                        
+                        
+                    if (readedText[i] == '(')
                     {
                         j = i;
-                        readedInPregress = "";
+                        
                         j++;
                         while (readedText[j] != '/')
                         {
@@ -222,18 +220,30 @@ public class FileService
                             j++;
 
                         }
-                        
-                    } 
                         if (readedInPregress == "true")
                             ReadedInPregress = true;
 
-
-
-
-
-
-                        Comanda comanda = new Comanda(ReadedFrom, ReadedTo, user, ReadedIsUrgent, readedReciver, ReadedUsername);
+                        if (readedIsUrgent == "true")
+                            ReadedIsUrgent = true;
+                        Comanda comanda = new Comanda(ReadedFrom, ReadedTo, user, ReadedIsUrgent, readedReciver, readedSender);
                         comenzi.Add(comanda);
+                        ReadedIdComanda = "";
+                        ReadedFrom = "";
+                        ReadedTo = "";
+                        ReadedUsername = "";
+                        readedInPregress = "";
+                        readedSender = "";
+                        readedReciver = "*";
+                        readedIsUrgent = "";
+                       
+                        
+                    } 
+                   
+
+
+
+
+                       
                         
 
 

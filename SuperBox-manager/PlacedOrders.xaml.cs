@@ -23,7 +23,7 @@ public partial class PlacedOrders : ContentPage
     private async Task InitializeAsync()
     {
         
-        string fileNameForDelivery = "Delivery2.txt";
+        string fileNameForDelivery = "Delivery3.txt";
         Comenzi = await _fileService.ReadDelivery(fileNameForDelivery, UserX);
         foreach (var VARIABLE in Comenzi)
         {
@@ -31,7 +31,7 @@ public partial class PlacedOrders : ContentPage
             Console.WriteLine("----" + VARIABLE);
             if (VARIABLE.From != "")
             {
-                OrderText.Text += VARIABLE.UserX.Username + " " + VARIABLE.From + " " + VARIABLE.To + " \n";
+                OrderText.Text += VARIABLE.UserX.Username + " " + VARIABLE.To + " " + VARIABLE.To + " \n";
             }
         }
        
