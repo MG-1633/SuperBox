@@ -54,7 +54,7 @@ public partial class Home : ContentPage
 
     private void ButtonSeeAdminRequests_OnClicked(object sender, EventArgs e)
     {
-        // Your event handling logic here
+        
       
     }
     

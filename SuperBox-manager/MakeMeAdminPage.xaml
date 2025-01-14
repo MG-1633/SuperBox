@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SuperBox_manager.MakeMeAdminPage">
+    <ContentPage.Content>
+        
+        <Button
+            x:Name="MakeMeAdminSend"
+            Text="Send" 
+            SemanticProperties.Hint="Counts the number of times you click"
+            Clicked="MakeMeAdminSend_OnClicked"
+            HorizontalOptions="Fill" />
+        
+    </ContentPage.Content>
+</ContentPage>

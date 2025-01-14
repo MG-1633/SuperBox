@@ -38,9 +38,9 @@
             await Navigation.PushAsync(new NewDelivery(Uuser));
         }
 
-        private void ButtonMakeMeAdmin_OnClicked(object? sender, EventArgs e)
+        private async void ButtonMakeMeAdmin_OnClicked(object? sender, EventArgs e)
         {
-           // throw new NotImplementedException();
+            await Navigation.PushAsync(new MakeMeAdminPage(Uuser));
         }
 
         private async void ButtonShowPlacedOrders_OnClicked(object? sender, EventArgs e)

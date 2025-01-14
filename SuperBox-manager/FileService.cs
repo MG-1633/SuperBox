@@ -482,35 +482,16 @@ public class FileService
 
     public async Task<List<SuperBox>> ReadSuperBox(string fileName)
     {
-        
         var folder = FileSystem.AppDataDirectory;
         var filePath = Path.Combine(folder, fileName);
-
-        
-       
-        
-           
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
         try
         {
-
             if (File.Exists(filePath))
             {
                 string readedText = File.ReadAllText(filePath);
                 int lenght = readedText.Length;
                 List<SuperBox> superboxes = new List<SuperBox>();
-
-
-
+                
                 for (int i = 0; i < lenght; i++)
                 {
                     if (readedText[i] == '|')
@@ -523,7 +504,6 @@ public class FileService
                         {
                             readedId = readedId + readedText[l];
                             l++;
-
                         }
                         l++;
                         while (readedText[l] != '/')
@@ -531,34 +511,68 @@ public class FileService
                             readedLocation = readedLocation + readedText[l];
                             l++;
                         }
-                        int id = Int32.Parse(readedId);
-                        SuperBox superbox = new SuperBox(id, readedLocation);
+                        SuperBox superbox = new SuperBox(readedId, readedLocation);
                         superboxes.Add(superbox);
-                        
-
                     }
                 }
-
                 return superboxes;
             }
-
         return null;
-
-
-
-
-
-
-
         }
         catch (Exception e)
         {
             Console.WriteLine(e);
             throw;
         }
-        
-        
     }
+    
+    public async Task SaveMakeMeAdmin(string fileName, User user)
+    {
+        var folder = FileSystem.AppDataDirectory;
+        var filePath = Path.Combine(folder, fileName);
+        try
+        {
+            string text = "|" + user.Uuid + "|"; 
+            await File.AppendAllTextAsync(filePath, text);
+            Console.WriteLine($"SuperBox-ul a fost salvat cu succes: {filePath}");
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"A apărut o eroare la salvare: {ex.Message}");
+            throw;
+        }
+
+    }
+
+    
+    public async Task<String[]> ReadMakeMeAdmin(string fileName)
+    {
+        var folder = FileSystem.AppDataDirectory;
+        var filePath = Path.Combine(folder, fileName);
+        try
+        {
+            if (File.Exists(filePath))
+            {
+                string readedText = File.ReadAllText(filePath);
+                int lenght = readedText.Length;
+                List<String> list = new List<String>();
+                return readedText.Split('|');
+            }
+            return null;
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            throw;
+        }
+    }
+
+    
+    
+    
+    
+    
+    
     
     
     

@@ -14,19 +14,19 @@ public partial class AddSuperBox : ContentPage
 
     }
 
-
-    int index = 1;
+    Random random = new Random();
+    private string Id = "";
     private async void ButtonPlace_OnClicked(object? sender, EventArgs e)
     {
         string fileNameForSuperBox = "AllSuperBoxes.txt";
 
         try
         {
-            index = index + 1;
+           Id = random.Next(1000,9999).ToString();
 
             string locatie = Field.Text;
 
-           SuperBox superbox = new SuperBox(index,locatie);
+           SuperBox superbox = new SuperBox(Id,locatie);
 
             // await _fileService.SaveMyDeliverysId(fileNameForId, comanda.IdComanda);
             await _fileService.SaveSuperBox(fileNameForSuperBox, superbox);
