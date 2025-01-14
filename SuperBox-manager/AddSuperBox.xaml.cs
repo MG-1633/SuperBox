@@ -24,13 +24,13 @@ public partial class AddSuperBox : ContentPage
 
         try
         {
-            string from = fromField.Text;
-            string to = toField.Text;
-            SuperBox superbox = new SuperBox(random, location);
+           // string from = fromField.Text;
+            //string to = toField.Text;
+           // SuperBox superbox = new SuperBox(random, location);
 
             // await _fileService.SaveMyDeliverysId(fileNameForId, comanda.IdComanda);
-            await _fileService.SaveSuperBox(fileNameForSuperBox, superbox);
-            await DisplayAlert("Succes", $"Datele au fost salvate cu succes.", "OK");
+           // await _fileService.SaveSuperBox(fileNameForSuperBox, superbox);
+           // await DisplayAlert("Succes", $"Datele au fost salvate cu succes.", "OK");
 
         }
         catch (Exception exception)

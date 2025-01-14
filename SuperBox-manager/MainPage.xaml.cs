@@ -9,8 +9,8 @@
         {
             InitializeComponent();
             Uuser = user;
-
-            BindingContext = Uuser;
+            userName.Text = Uuser.Username;
+            //BindingContext = Uuser;
         }
 
        
