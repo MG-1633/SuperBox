@@ -25,7 +25,7 @@ public partial class IncomingPage : ContentPage
         
         foreach (var VARIABLE in Comenzi)
         {
-            if (VARIABLE.To == UserX.Username)
+            if (VARIABLE.Reciver == UserX.Username)
             {
                 Console.WriteLine("----" + VARIABLE);
                 OrderText.Text += VARIABLE.IdComanda + " " + VARIABLE.From + " " + VARIABLE.Sender + " \n";

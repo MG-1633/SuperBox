@@ -14,10 +14,12 @@ public partial class Home : ContentPage
 
     public User Uuser { get; set; }
     List<Comanda> Comenzi = new List<Comanda>();
-    public Home(User user, List<Comanda> comenzi)
+    List<User> Users = new List<User>();
+    public Home(User user, List<Comanda> comenzi, List<User> users)
     {
         InitializeComponent();
         Uuser = user;
+        Users = users;
         userName.Text = Uuser.Username;
         Comenzi = comenzi;
     }

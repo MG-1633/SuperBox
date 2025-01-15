@@ -511,6 +511,7 @@ public class FileService
             {
                 string text = "|" + user.Username + "/";
                 await File.AppendAllTextAsync(filePath, text);
+                
                 Console.WriteLine($"Mesaj trimis cu succes: {filePath}");
             }
             catch (Exception ex)
@@ -534,10 +535,11 @@ public class FileService
                     int lenght = readedText.Length;
                     List<String> list = new List<String>();
 
-                    string readedUsername = "";
                     
                     for (int i = 0; i < lenght; i++)
                     {
+                        string readedUsername = "";
+
                         if (readedText[i] == '|')
                         {
                             int j = i;
@@ -549,6 +551,7 @@ public class FileService
 
                             }
                             list.Add(readedUsername);
+                            Console.WriteLine(readedUsername);
                             readedUsername = "";
                         }
                        

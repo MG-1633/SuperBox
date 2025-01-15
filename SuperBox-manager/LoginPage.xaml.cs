@@ -38,10 +38,10 @@ List<Comanda> Comenzi = new List<Comanda>();
 			        Console.WriteLine("Logged in as: " + user.Username + "admin" + user.Admin);
 			        if (user.Admin == "true")
 			        {
-				        await Navigation.PushAsync(new Home(user,Comenzi));
+				        await Navigation.PushAsync(new Home(user,Comenzi,users));
 
 			        }
-			        else await Navigation.PushAsync(new MainPage(user,Comenzi));
+			        else await Navigation.PushAsync(new MainPage(user,Comenzi,users));
 
 
 
