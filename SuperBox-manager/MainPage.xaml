@@ -60,12 +60,24 @@
                 Clicked="ButtonShowPlacedOrders_OnClicked"
                 HorizontalOptions="Fill" />
 
-            <CollectionView x:Name="viewComenzi"  ItemsLayout="Verticalist" SelectionMode="Multiple">
+            <CollectionView x:Name="viewComenzi" >
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
-                        <VerticalStackLayout Background="Gray" Padding="5" Margin="5">
-                            <Label Text="{Binding .}" HorizontalOptions="Center" />
-                        </VerticalStackLayout>
+                        <Frame Margin="10">
+                            <VerticalStackLayout>
+                                
+                                <HorizontalStackLayout>
+                                    <Label Text="{Binding From}" Margin="0,0,5,0"/>
+                                    <Label Text="{Binding To}" Margin="0,5,0,0"/>
+                                </HorizontalStackLayout>
+
+                                <HorizontalStackLayout>
+                                    <Label Text="{Binding reciver}" Margin="0,0,5,0"/>
+                                    <Label Text="{Binding sender}" Margin="0,5,0,0"/>
+                                </HorizontalStackLayout>
+                                
+                            </VerticalStackLayout>
+                        </Frame>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
