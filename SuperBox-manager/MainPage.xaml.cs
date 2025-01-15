@@ -4,16 +4,19 @@
     {
         int count = 0;
         private readonly FileService _fileService;
-        
+        public List<Comanda> Comenzi = new List<Comanda>();
         public User Uuser { get; set; }
 
         public MainPage(User user)
         {
             InitializeComponent();
+            
             Uuser = user;
             userName.Text = Uuser.Username;
             string fileNameForDelivery = "Delivery3.txt";
-            viewComenzi.ItemsSource = (System.Collections.IEnumerable)_fileService.ReadDelivery(fileNameForDelivery, Uuser);
+            _ = InitializeAsync();
+            //-----viewComenzi.ItemsSource = (System.Collections.IEnumerable)_fileService.ReadDelivery(fileNameForDelivery, Uuser);
+            viewComenzi.ItemsSource = Comenzi;
             //BindingContext = Uuser;
         }
 
@@ -31,6 +34,20 @@
             SemanticScreenReader.Announce(CounterBtn.Text);
             
         }
+
+
+        private async Task InitializeAsync()
+        {
+
+            string fileNameForDelivery = "Delivery3.txt";
+            Comenzi = await _fileService.ReadDelivery(fileNameForDelivery, Uuser);
+
+        }
+
+
+
+
+       
 
         private async void ButtonBackToLogIn_OnClicked(object? sender, EventArgs e)
         {
