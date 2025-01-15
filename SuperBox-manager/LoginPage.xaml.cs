@@ -1,5 +1,5 @@
-using System.Net.Mime;
-using PassKit;
+﻿using System.Net.Mime;
+//using PassKit;
 
 namespace SuperBox_manager;
 
@@ -56,6 +56,26 @@ List<Comanda> Comenzi = new List<Comanda>();
 
 
         
+        //	if (savedData != null)
+	//	{
+
+
+
+
+			//catre MainPage
+	//		if (savedData.Admin == "true")
+	//		{
+      //          await Navigation.PushAsync(new Home(savedData));
+
+     //       }
+     //       else await Navigation.PushAsync(new MainPage(savedData));
+
+	//	}
+	//	else
+	//	{
+
+	//		await DisplayAlert("Eșec", "Utilizator sau parolă incorecte.", "OK");
+	//	}
 	}
 	
 	private async void EnterMethod_OnClicked(object? sender, EventArgs e)
