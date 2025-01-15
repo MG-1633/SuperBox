@@ -535,10 +535,10 @@ public class FileService
                     int lenght = readedText.Length;
                     List<String> list = new List<String>();
 
-                    
+                    string readedUsername = "";
                     for (int i = 0; i < lenght; i++)
                     {
-                        string readedUsername = "";
+                        
 
                         if (readedText[i] == '|')
                         {
@@ -546,7 +546,7 @@ public class FileService
                             j++;
                             while (readedText[j] != '/')
                             {
-                                readedUsername = readedUsername + readedText[i];
+                                readedUsername = readedUsername + readedText[j];
                                 j++;
 
                             }
