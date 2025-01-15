@@ -532,12 +532,10 @@ public class FileService
                                 j++;
 
                             }
-                        }
-                        else
-                        {
                             list.Add(readedUsername);
                             readedUsername = "";
                         }
+                       
                     }
                     return list;
                 }
