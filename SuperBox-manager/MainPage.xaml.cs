@@ -6,27 +6,27 @@
         private readonly FileService _fileService;
         public List<Comanda> Comenzi = new List<Comanda>();
         public User Uuser { get; set; }
-
-        public MainPage(User user)
+        public MainPage(User user, List<Comanda> comenzi)
         {
             InitializeComponent();
-            
             Uuser = user;
+            Comenzi = comenzi;
             userName.Text = Uuser.Username;
-            string fileNameForDelivery = "Delivery3.txt";
+            
             viewComenzi.ItemsSource = GetComandas();
         }
-
+        
+        
         private List<Comanda> GetComandas()
         {
             List<Comanda> comandas = new List<Comanda>();
-            Comanda com1 = new Comanda("Box2", "Box5", Uuser, false, "Marcus", "Elimi");
-            Comanda com2 = new Comanda("Box5", "Box7", Uuser, false, "Andreeas", "Marinescu");
-            comandas.Add(com1);
-            comandas.Add(com2);
+            
+            comandas = Comenzi;
             return comandas;
         }
-
+        
+        
+        
         private void OnCounterClicked(object sender, EventArgs e)
         {
             count++;
@@ -41,7 +41,7 @@
         }
 
 
-       
+      
 
 
 
@@ -51,6 +51,13 @@
         private async void ButtonBackToLogIn_OnClicked(object? sender, EventArgs e)
         {
             await Navigation.PushAsync(new LoginPage());
+            _fileService.DeleteFile("Delivery3.txt");
+            _fileService.DeleteFile("credentialsTest.txt");
+            _fileService.DeleteFile("AdminList1.txt");
+            foreach (Comanda comanda in Comenzi)
+            {
+                await _fileService.SaveDelivery("Delivery3.txt", comanda);
+            }
         }
 
         private async void ButtonMakeNewDelivery_OnClicked(object? sender, EventArgs e)
@@ -65,13 +72,14 @@
 
         private async void ButtonShowPlacedOrders_OnClicked(object? sender, EventArgs e)
         {
-            await Navigation.PushAsync(new PlacedOrders(Uuser));
+            await Navigation.PushAsync(new PlacedOrders(Uuser, Comenzi));
 
         }
 
-        private void ButtonShowIncomingOrders_OnClicked(object? sender, EventArgs e)
+        private async void ButtonShowIncomingOrders_OnClicked(object? sender, EventArgs e)
         {
-            //throw new NotImplementedException();
+            await Navigation.PushAsync(new IncomingPage(Comenzi));
+
         }
 
         private void ButtonAddSuperBox_OnClicked(object? sender, EventArgs e)
