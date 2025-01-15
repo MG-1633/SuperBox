@@ -1,5 +1,5 @@
 using System.Net.Mime;
-using PassKit;
+//using PassKit;
 
 namespace SuperBox_manager;
 
@@ -51,28 +51,6 @@ List<User> users = new List<User>();
 	        await DisplayAlert("Eroare", $"Naspaaaaaaa {ex.Message}", "OK");
         }
 
-
-
-        //	if (savedData != null)
-	//	{
-
-
-
-
-			//catre MainPage
-	//		if (savedData.Admin == "true")
-	//		{
-      //          await Navigation.PushAsync(new Home(savedData));
-
-     //       }
-     //       else await Navigation.PushAsync(new MainPage(savedData));
-
-	//	}
-	//	else
-	//	{
-
-	//		await DisplayAlert("Eșec", "Utilizator sau parolă incorecte.", "OK");
-	//	}
 	}
 	
 	private async void EnterMethod_OnClicked(object? sender, EventArgs e)
