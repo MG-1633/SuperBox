@@ -1,4 +1,5 @@
 using System.Net.Mime;
+using PassKit;
 
 namespace SuperBox_manager;
 
@@ -25,23 +26,34 @@ List<User> users = new List<User>();
 		
 
         users = await _fileService.ReadUser(fileName);
-        foreach (var user in users)
+        try
         {
-	        if (user.Username == username && user.Password == password)
+	        foreach (var user in users)
 	        {
-		        if (user.Admin == "true")
+		        if (user.Username == username && user.Password == password)
 		        {
-			        await Navigation.PushAsync(new Home(user));
+			        Console.WriteLine("Logged in as: " + user.Username + "admin" + user.Admin);
+			        if (user.Admin == "true")
+			        {
+				        await Navigation.PushAsync(new Home(user));
+
+			        }
+			        else await Navigation.PushAsync(new MainPage(user));
+
+
+
 		        }
-		        else
-		        {
-			         await Navigation.PushAsync(new MainPage(user));
-		        }
-		        
+
 	        }
-	        
         }
-	//	if (savedData != null)
+        catch (Exception ex)
+        {
+	        await DisplayAlert("Eroare", $"Naspaaaaaaa {ex.Message}", "OK");
+        }
+
+
+
+        //	if (savedData != null)
 	//	{
 
 

@@ -60,7 +60,7 @@
                 Clicked="ButtonShowPlacedOrders_OnClicked"
                 HorizontalOptions="Fill" />
 
-            <CollectionView x:Name="viewComenzi"  ItemsLayout="Verticalist" SelectionMode="Multiple">
+            <CollectionView x:Name="viewComenzi" >
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
                         <VerticalStackLayout Background="Gray" Padding="5" Margin="5">

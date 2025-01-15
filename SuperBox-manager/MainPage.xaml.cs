@@ -14,13 +14,18 @@
             Uuser = user;
             userName.Text = Uuser.Username;
             string fileNameForDelivery = "Delivery3.txt";
-            _ = InitializeAsync();
-            //-----viewComenzi.ItemsSource = (System.Collections.IEnumerable)_fileService.ReadDelivery(fileNameForDelivery, Uuser);
-            viewComenzi.ItemsSource = Comenzi;
-            //BindingContext = Uuser;
+            viewComenzi.ItemsSource = GetComandas();
         }
 
-       
+        private List<Comanda> GetComandas()
+        {
+            List<Comanda> comandas = new List<Comanda>();
+            Comanda com1 = new Comanda("Box2", "Box5", Uuser, false, "Marcus", "Elimi");
+            Comanda com2 = new Comanda("Box5", "Box7", Uuser, false, "Andreeas", "Marinescu");
+            comandas.Add(com1);
+            comandas.Add(com2);
+            return comandas;
+        }
 
         private void OnCounterClicked(object sender, EventArgs e)
         {
@@ -36,13 +41,7 @@
         }
 
 
-        private async Task InitializeAsync()
-        {
-
-            string fileNameForDelivery = "Delivery3.txt";
-            Comenzi = await _fileService.ReadDelivery(fileNameForDelivery, Uuser);
-
-        }
+       
 
 
 
