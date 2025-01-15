@@ -36,6 +36,7 @@ namespace SuperBox_manager
                 
                 await _fileService.SaveDelivery(fileNameForDelivery,comanda);
                 await DisplayAlert("Succes", $"Datele au fost salvate cu succes.", "OK");
+                
 
             }
             catch (Exception exception)
