@@ -5,12 +5,15 @@
         int count = 0;
         private readonly FileService _fileService;
         public List<Comanda> Comenzi = new List<Comanda>();
+        public List<User> Users = new List<User>();
+
         public User Uuser { get; set; }
-        public MainPage(User user, List<Comanda> comenzi)
+        public MainPage(User user, List<Comanda> comenzi, List<User> users)
         {
             InitializeComponent();
             Uuser = user;
             Comenzi = comenzi;
+            Users = users;
             userName.Text = Uuser.Username;
             
             viewComenzi.ItemsSource = GetComandas();
@@ -53,11 +56,16 @@
             await Navigation.PushAsync(new LoginPage());
             _fileService.DeleteFile("Delivery3.txt");
             _fileService.DeleteFile("credentialsTest.txt");
-            _fileService.DeleteFile("AdminList1.txt");
             foreach (Comanda comanda in Comenzi)
             {
                 await _fileService.SaveDelivery("Delivery3.txt", comanda);
             }
+            foreach (User varUser in Users)
+            {
+                await _fileService.SaveUser("credentialsTest.txt",varUser.Uuid, varUser.Username, varUser.Password,varUser.Admin, varUser.Phone, varUser.Email);
+            }
+            
+            
         }
 
         private async void ButtonMakeNewDelivery_OnClicked(object? sender, EventArgs e)
