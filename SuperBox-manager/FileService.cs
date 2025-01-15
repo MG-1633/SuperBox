@@ -246,7 +246,7 @@ public class FileService
     }
 
 
-    public async Task<User> ReadTextFromFile(string fileName, string username, string password)
+    public async Task<List<User>> ReadUser(string fileName)
     {
         // Obținem directorul de stocare al aplicației
         var folder = FileSystem.AppDataDirectory;
@@ -258,6 +258,7 @@ public class FileService
         string readedEmail = "";
         // Creăm calea completă a fișierului
         var filePath = Path.Combine(folder, fileName);
+        List<User> users = new List<User>();
 
         try
         {
@@ -281,87 +282,56 @@ public class FileService
 
                         }
 
-                        Console.WriteLine(readedUsername);
-                        Console.WriteLine(readedUsername);
-                        Console.WriteLine(readedUsername);
-                        Console.WriteLine(readedUsername);
-                        Console.WriteLine(readedUsername);
-                        Console.WriteLine(readedUsername);
-                        Console.WriteLine(readedUsername);
-                        Console.WriteLine(readedUsername);
-                        Console.WriteLine(readedUsername);
-                        Console.WriteLine(readedUsername);
-                        Console.WriteLine(readedUsername);
-                        Console.WriteLine(readedUsername);
-                        Console.WriteLine(readedUsername);
-                        Console.WriteLine(readedUsername);
-                        Console.WriteLine(readedUsername);
-
-
-
-                    }
-
-                    if (readedText[i] == '#')
-                    {
-                        int j = i;
-                        readedPassword = "";
                         j++;
                         while (readedText[j] != '!')
                         {
                             readedPassword = readedPassword + readedText[j];
                             j++;
                         }
-
-                        if (readedUsername == username && readedPassword == password)
+                        
+                        j++;
+                        while (readedText[j] != '$')
                         {
-                            readedPhone = "";
-                            readedEmail = "";
-                            readedAdmin = "";
-                            readedUuid = "";
-
+                            readedUuid = readedUuid + readedText[j];
                             j++;
-                            while (readedText[j] != '$')
-                            {
-                                readedUuid = readedUuid + readedText[j];
-                                j++;
-                            }
-
-                            j++;
-                            while (readedText[j] != '&')
-                            {
-                                readedAdmin = readedAdmin + readedText[j];
-                                j++;
-                            }
-
-                            j++;
-                            while (readedText[j] != '*')
-                            {
-                                readedPhone = readedPhone + readedText[j];
-                                j++;
-                            }
-
-                            while (readedText[j] != '/')
-                            {
-                                readedEmail = readedEmail + readedText[j];
-                                j++;
-                            }
-
-
-
-
-
-
-
-
-                            User user = new User(readedUsername, readedPassword, readedUuid, readedAdmin, readedEmail,
-                                readedPhone);
-                            return user;
-
-
-
                         }
+                        j++;
+                        while (readedText[j] != '&')
+                        {
+                            readedAdmin = readedAdmin + readedText[j];
+                            j++;
+                        }
+
+                        j++;
+                        while (readedText[j] != '*')
+                        {
+                            readedPhone = readedPhone + readedText[j];
+                            j++;
+                        }
+
+                        j++;
+                        while (readedText[j] != '/')
+                        {
+                            readedEmail = readedEmail + readedText[j];
+                            j++;
+                        }
+                        User user = new User(readedUsername, readedPassword, readedUuid, readedAdmin, readedEmail, readedPhone);
+                        users.Add(user);
+                        
+                        
+                        
+                        readedPhone = "";
+                        readedEmail = "";
+                        readedAdmin = "";
+                        readedUuid = "";
+                        readedPassword = "";
+                        readedUsername = "";
+
+
                     }
                 }
+                return users;
+
             }
             else
             {
@@ -523,7 +493,7 @@ public class FileService
             var filePath = Path.Combine(folder, fileName);
             try
             {
-                string text = "|" + user.Username + "|";
+                string text = "|" + user.Username + "/";
                 await File.AppendAllTextAsync(filePath, text);
                 Console.WriteLine($"SuperBox-ul a fost salvat cu succes: {filePath}");
             }
@@ -536,7 +506,7 @@ public class FileService
         }
 
 
-        public async Task<String[]> ReadMakeMeAdmin(string fileName)
+        public async Task<List<String>> ReadMakeMeAdmin(string fileName)
         {
             var folder = FileSystem.AppDataDirectory;
             var filePath = Path.Combine(folder, fileName);
@@ -547,7 +517,29 @@ public class FileService
                     string readedText = File.ReadAllText(filePath);
                     int lenght = readedText.Length;
                     List<String> list = new List<String>();
-                    return readedText.Split('|');
+
+                    string readedUsername = "";
+                    
+                    for (int i = 0; i < lenght; i++)
+                    {
+                        if (readedText[i] == '|')
+                        {
+                            int j = i;
+                            j++;
+                            while (readedText[j] != '/')
+                            {
+                                readedUsername = readedUsername + readedText[i];
+                                j++;
+
+                            }
+                        }
+                        else
+                        {
+                            list.Add(readedUsername);
+                            readedUsername = "";
+                        }
+                    }
+                    return list;
                 }
 
                 return null;

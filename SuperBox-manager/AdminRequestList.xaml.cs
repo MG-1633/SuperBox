@@ -9,7 +9,7 @@ namespace SuperBox_manager;
 public partial class AdminRequestList : ContentPage
 {
     private readonly FileService _fileService;
-    public String[] AdminsInApproval;
+    public List<String> AdminsInApproval;
     public AdminRequestList()
     {
         InitializeComponent();
@@ -26,7 +26,7 @@ public partial class AdminRequestList : ContentPage
         foreach (var VARIABLE in AdminsInApproval)
         {
             
-            //  AdminList.Text += VARIABLE.Id+ " " + VARIABLE.Location +  " \n";
+              AdminList.Text += VARIABLE +  " \n";
             
         }
        

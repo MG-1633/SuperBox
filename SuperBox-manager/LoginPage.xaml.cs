@@ -14,7 +14,7 @@ public partial class LoginPage : ContentPage
 		InitializeComponent();
 		_fileService = new FileService(); // Instanțierea serviciului
 	}
-
+List<User> users = new List<User>();
 
     private async void ButtonClicked_OnClicked(object sender, EventArgs e)
 	{
@@ -24,27 +24,43 @@ public partial class LoginPage : ContentPage
 
 		
 
-        User savedData = await _fileService.ReadTextFromFile(fileName, username, password);
-		if (savedData != null)
-		{
+        users = await _fileService.ReadUser(fileName);
+        foreach (var user in users)
+        {
+	        if (user.Username == username && user.Password == password)
+	        {
+		        if (user.Admin == "true")
+		        {
+			        await Navigation.PushAsync(new Home(user));
+		        }
+		        else
+		        {
+			         await Navigation.PushAsync(new MainPage(user));
+		        }
+		        
+	        }
+	        
+        }
+	//	if (savedData != null)
+	//	{
 
 
 
 
 			//catre MainPage
-			if (savedData.Admin == "true")
-			{
-                await Navigation.PushAsync(new Home(savedData));
+	//		if (savedData.Admin == "true")
+	//		{
+      //          await Navigation.PushAsync(new Home(savedData));
 
-            }
-            else await Navigation.PushAsync(new MainPage(savedData));
+     //       }
+     //       else await Navigation.PushAsync(new MainPage(savedData));
 
-		}
-		else
-		{
+	//	}
+	//	else
+	//	{
 
-			await DisplayAlert("Eșec", "Utilizator sau parolă incorecte.", "OK");
-		}
+	//		await DisplayAlert("Eșec", "Utilizator sau parolă incorecte.", "OK");
+	//	}
 	}
 	
 	private async void EnterMethod_OnClicked(object? sender, EventArgs e)
