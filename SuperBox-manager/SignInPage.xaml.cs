@@ -38,7 +38,7 @@ public partial class SignInPage : ContentPage
                 return;
             }
 
-            await _fileService.SaveTextToFile(fileName, randomNumber, username, password, "false", phone, email);
+            await _fileService.SaveUser(fileName, randomNumber, username, password, "false", phone, email);
 
             await DisplayAlert("Succes", $"Datele au fost salvate cu succes.", "OK");
 

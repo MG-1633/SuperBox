@@ -13,7 +13,9 @@ public class FileService
         var filePath = Path.Combine(folder, fileName);
         try
         {
-            string text = "|" + comanda.IdComanda + "#" + comanda.From + "!" + comanda.To + "$" + comanda.UserX.Username + "&" + comanda.IsUrgent + "*" + comanda.Reciver +  ")" + comanda.Sender + "(" + comanda.InPregress + "/";
+            string text = "|" + comanda.IdComanda + "#" + comanda.From + "!" + comanda.To + "$" +
+                          comanda.UserX.Username + "&" + comanda.IsUrgent + "*" + comanda.Reciver + ")" +
+                          comanda.Sender + "(" + comanda.InPregress + "/";
             await File.AppendAllTextAsync(filePath, text);
             Console.WriteLine($"Comanda a fost salvata cu succes: {filePath}");
         }
@@ -25,50 +27,7 @@ public class FileService
 
     }
 
-    public async Task SaveMyDeliverysId(string fileName, string idComanda)
-    {
-        var folder = FileSystem.AppDataDirectory;
-        var filePath = Path.Combine(folder, fileName);
-        try
-        {
-            string text = idComanda + "|";
-            await File.AppendAllTextAsync(filePath, text);
-            Console.WriteLine($"Id a fost salvata cu succes: {filePath}");
-        }
-        catch (Exception ex)
-        {
-            Console.WriteLine($"A apărut o eroare la salvare: {ex.Message}");
-            throw;
-        }
-
-    }
-
-    public async Task<String[]> ReadMyDeliveryId(string fileName)
-    {
-        var folder = FileSystem.AppDataDirectory;
-        var filePath = Path.Combine(folder, fileName);
-
-        try
-        {
-            if (File.Exists(filePath))
-            {
-                string readedText = File.ReadAllText(filePath);
-                return readedText.Split('|');
-            }
-
-        }
-        catch (Exception ex)
-        {
-            Console.WriteLine($"A apărut o eroare la citire. IdComanda: {ex.Message}");
-            throw;
-        }
-        return null;
-
-    }
-
-
-
-    public async Task<List<Comanda>> ReadDelivery(string fileName,User user)
+    public async Task<List<Comanda>> ReadDelivery(string fileName, User user)
     {
         var folder = FileSystem.AppDataDirectory;
         var filePath = Path.Combine(folder, fileName);
@@ -99,12 +58,12 @@ public class FileService
                 for (int i = 0; i < lenght; i++)
                 {
 
-                    
+
 
                     if (readedText[i] == '|')
                     {
                         j = i;
-                       
+
                         j++;
                         while (readedText[j] != '#')
                         {
@@ -120,7 +79,7 @@ public class FileService
                     if (readedText[i] == '#')
                     {
                         j = i;
-                        
+
                         j++;
                         while (readedText[j] != '!')
                         {
@@ -128,13 +87,14 @@ public class FileService
                             j++;
 
                         }
-                        
+
                     }
+
                     Console.WriteLine(ReadedIdComanda + "xxxx");
                     if (readedText[i] == '!')
                     {
                         j = i;
-                        
+
                         j++;
                         while (readedText[j] != '$')
                         {
@@ -142,13 +102,14 @@ public class FileService
                             j++;
 
                         }
-                        
+
                     }
+
                     Console.WriteLine(ReadedTo + "xxxxxxxxxxxxxxxxxxxx");
                     if (readedText[i] == '$')
                     {
                         j = i;
-                       
+
                         j++;
                         while (readedText[j] != '&')
                         {
@@ -156,13 +117,14 @@ public class FileService
                             j++;
 
                         }
-                        
+
                     }
+
                     Console.WriteLine(ReadedIdComanda + "xxxx");
                     if (readedText[i] == '&')
                     {
                         j = i;
-                       
+
                         j++;
                         while (readedText[j] != '*')
                         {
@@ -170,15 +132,15 @@ public class FileService
                             j++;
 
                         }
-                        
-                    }
-                   
 
-                    
+                    }
+
+
+
                     if (readedText[i] == '&')
                     {
                         j = i;
-                       
+
                         j++;
                         while (readedText[j] != ')')
                         {
@@ -186,16 +148,17 @@ public class FileService
                             j++;
 
                         }
-                        
+
                     }
+
                     Console.WriteLine(ReadedIdComanda + "xxxx");
-                        
-                        
-                        
+
+
+
                     if (readedText[i] == ')')
-                    { 
-                        j = i; 
-                       
+                    {
+                        j = i;
+
                         j++;
                         while (readedText[j] != '(')
                         {
@@ -203,16 +166,16 @@ public class FileService
                             j++;
 
                         }
-                        
-                    } 
-                    
+
+                    }
+
                     Console.WriteLine(ReadedIdComanda + "xxxx");
-                        
-                        
+
+
                     if (readedText[i] == '(')
                     {
                         j = i;
-                        
+
                         j++;
                         while (readedText[j] != '/')
                         {
@@ -220,12 +183,14 @@ public class FileService
                             j++;
 
                         }
+
                         if (readedInPregress == "true")
                             ReadedInPregress = true;
 
                         if (readedIsUrgent == "true")
                             ReadedIsUrgent = true;
-                        Comanda comanda = new Comanda(ReadedFrom, ReadedTo, user, ReadedIsUrgent, readedReciver, readedSender);
+                        Comanda comanda = new Comanda(ReadedFrom, ReadedTo, user, ReadedIsUrgent, readedReciver,
+                            readedSender);
                         comenzi.Add(comanda);
                         ReadedIdComanda = "";
                         ReadedFrom = "";
@@ -235,20 +200,9 @@ public class FileService
                         readedSender = "";
                         readedReciver = "*";
                         readedIsUrgent = "";
-                       
                         
-                    } 
-                   
+                    }
 
-
-
-
-                       
-                        
-
-
-
-                    
                 }
 
                 return comenzi;
@@ -265,13 +219,15 @@ public class FileService
             Console.WriteLine($"A apărut o eroare la citire Comanda prin Id: {ex.Message}");
             throw;
         }
+
         return null;
     }
 
 
 
 
-    public async Task SaveTextToFile(string fileName, string uuid, string username, string password, string admin, string phone, string email)
+    public async Task SaveUser(string fileName, string uuid, string username, string password, string admin,
+        string phone, string email)
     {
         var folder = FileSystem.AppDataDirectory;
         var filePath = Path.Combine(folder, fileName);
@@ -326,11 +282,25 @@ public class FileService
                         }
 
                         Console.WriteLine(readedUsername);
-                        Console.WriteLine(readedUsername); Console.WriteLine(readedUsername); Console.WriteLine(readedUsername); Console.WriteLine(readedUsername); Console.WriteLine(readedUsername); Console.WriteLine(readedUsername); Console.WriteLine(readedUsername); Console.WriteLine(readedUsername); Console.WriteLine(readedUsername); Console.WriteLine(readedUsername); Console.WriteLine(readedUsername); Console.WriteLine(readedUsername); Console.WriteLine(readedUsername); Console.WriteLine(readedUsername);
+                        Console.WriteLine(readedUsername);
+                        Console.WriteLine(readedUsername);
+                        Console.WriteLine(readedUsername);
+                        Console.WriteLine(readedUsername);
+                        Console.WriteLine(readedUsername);
+                        Console.WriteLine(readedUsername);
+                        Console.WriteLine(readedUsername);
+                        Console.WriteLine(readedUsername);
+                        Console.WriteLine(readedUsername);
+                        Console.WriteLine(readedUsername);
+                        Console.WriteLine(readedUsername);
+                        Console.WriteLine(readedUsername);
+                        Console.WriteLine(readedUsername);
+                        Console.WriteLine(readedUsername);
 
 
 
                     }
+
                     if (readedText[i] == '#')
                     {
                         int j = i;
@@ -362,12 +332,14 @@ public class FileService
                                 readedAdmin = readedAdmin + readedText[j];
                                 j++;
                             }
+
                             j++;
                             while (readedText[j] != '*')
                             {
                                 readedPhone = readedPhone + readedText[j];
                                 j++;
                             }
+
                             while (readedText[j] != '/')
                             {
                                 readedEmail = readedEmail + readedText[j];
@@ -402,180 +374,200 @@ public class FileService
             Console.WriteLine($"A apărut o eroare la citire: {ex.Message}");
             throw;
         }
+
         return null;
 
-
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
     public async Task<bool> UserExistsInFile(string fileName, string username)
-    {
-        var folder = FileSystem.AppDataDirectory;
-        string readedUsername = "";
-
-        // Creăm calea completă a fișierului
-        var filePath = Path.Combine(folder, fileName);
-
-        try
         {
-            if (File.Exists(filePath))
+            var folder = FileSystem.AppDataDirectory;
+            string readedUsername = "";
+
+            // Creăm calea completă a fișierului
+            var filePath = Path.Combine(folder, fileName);
+
+            try
             {
-                string readedText = File.ReadAllText(filePath);
-                int lenght = readedText.Length;
-
-
-                for (int i = 0; i < lenght; i++)
+                if (File.Exists(filePath))
                 {
-                    if (readedText[i] == '|')
+                    string readedText = File.ReadAllText(filePath);
+                    int lenght = readedText.Length;
+
+
+                    for (int i = 0; i < lenght; i++)
                     {
-                        int j = i;
-                        readedUsername = "";
-                        j++;
-                        while (readedText[j] != '#')
+                        if (readedText[i] == '|')
                         {
-                            readedUsername = readedUsername + readedText[j];
+                            int j = i;
+                            readedUsername = "";
                             j++;
-                        
+                            while (readedText[j] != '#')
+                            {
+                                readedUsername = readedUsername + readedText[j];
+                                j++;
+
+
+                            }
+
+                            if (readedUsername == username) return true;
 
                         }
-
-                        if (readedUsername == username) return true;
-
                     }
+
+                    Console.WriteLine(readedUsername);
+
+
+
+                    return false; // Utilizatorul nu există
+
+
                 }
-
-                Console.WriteLine(readedUsername);
-                
-
-
-                return false; // Utilizatorul nu există
 
 
             }
+            catch (Exception ex)
 
-
-        }
-        catch(Exception ex) 
-        
-        {
-            //await DisplayAlert("Eroare", $"Nu s-a putut salva fișierul: {ex.Message}", "OK");
-            Console.WriteLine("aici sa dat crucea");
-        }
-        return false;
-
-    }
-    public async Task SaveSuperBox(string fileName, SuperBox superbox)
-    {
-        var folder = FileSystem.AppDataDirectory;
-        var filePath = Path.Combine(folder, fileName);
-        try
-        {
-            string text = "|" + superbox.Id + "#" + superbox.Location + "/"; 
-            await File.AppendAllTextAsync(filePath, text);
-            Console.WriteLine($"SuperBox-ul a fost salvat cu succes: {filePath}");
-        }
-        catch (Exception ex)
-        {
-            Console.WriteLine($"A apărut o eroare la salvare: {ex.Message}");
-            throw;
-        }
-
-    }
-
-    public async Task<List<SuperBox>> ReadSuperBox(string fileName)
-    {
-        var folder = FileSystem.AppDataDirectory;
-        var filePath = Path.Combine(folder, fileName);
-        try
-        {
-            if (File.Exists(filePath))
             {
-                string readedText = File.ReadAllText(filePath);
-                int lenght = readedText.Length;
-                List<SuperBox> superboxes = new List<SuperBox>();
-                
-                for (int i = 0; i < lenght; i++)
+                //await DisplayAlert("Eroare", $"Nu s-a putut salva fișierul: {ex.Message}", "OK");
+                Console.WriteLine("aici sa dat crucea");
+            }
+
+            return false;
+
+        }
+
+        public async Task SaveSuperBox(string fileName, SuperBox superbox)
+        {
+            var folder = FileSystem.AppDataDirectory;
+            var filePath = Path.Combine(folder, fileName);
+            try
+            {
+                string text = "|" + superbox.Id + "#" + superbox.Location + "/";
+                await File.AppendAllTextAsync(filePath, text);
+                Console.WriteLine($"SuperBox-ul a fost salvat cu succes: {filePath}");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"A apărut o eroare la salvare: {ex.Message}");
+                throw;
+            }
+
+        }
+
+        public async Task<List<SuperBox>> ReadSuperBox(string fileName)
+        {
+            var folder = FileSystem.AppDataDirectory;
+            var filePath = Path.Combine(folder, fileName);
+            try
+            {
+                if (File.Exists(filePath))
                 {
-                    if (readedText[i] == '|')
+                    string readedText = File.ReadAllText(filePath);
+                    int lenght = readedText.Length;
+                    List<SuperBox> superboxes = new List<SuperBox>();
+
+                    for (int i = 0; i < lenght; i++)
                     {
-                        string readedId = "";
-                        string readedLocation = "";
-                        int l = i;
-                        l++;
-                        while (readedText[l] != '#')
+                        if (readedText[i] == '|')
                         {
-                            readedId = readedId + readedText[l];
+                            string readedId = "";
+                            string readedLocation = "";
+                            int l = i;
                             l++;
-                        }
-                        l++;
-                        while (readedText[l] != '/')
-                        {
-                            readedLocation = readedLocation + readedText[l];
+                            while (readedText[l] != '#')
+                            {
+                                readedId = readedId + readedText[l];
+                                l++;
+                            }
+
                             l++;
+                            while (readedText[l] != '/')
+                            {
+                                readedLocation = readedLocation + readedText[l];
+                                l++;
+                            }
+
+                            SuperBox superbox = new SuperBox(readedId, readedLocation);
+                            superboxes.Add(superbox);
                         }
-                        SuperBox superbox = new SuperBox(readedId, readedLocation);
-                        superboxes.Add(superbox);
                     }
+
+                    return superboxes;
                 }
-                return superboxes;
+
+                return null;
             }
-        return null;
-        }
-        catch (Exception e)
-        {
-            Console.WriteLine(e);
-            throw;
-        }
-    }
-    
-    public async Task SaveMakeMeAdmin(string fileName, User user)
-    {
-        var folder = FileSystem.AppDataDirectory;
-        var filePath = Path.Combine(folder, fileName);
-        try
-        {
-            string text = "|" + user.Uuid + "|"; 
-            await File.AppendAllTextAsync(filePath, text);
-            Console.WriteLine($"SuperBox-ul a fost salvat cu succes: {filePath}");
-        }
-        catch (Exception ex)
-        {
-            Console.WriteLine($"A apărut o eroare la salvare: {ex.Message}");
-            throw;
-        }
-
-    }
-
-    
-    public async Task<String[]> ReadMakeMeAdmin(string fileName)
-    {
-        var folder = FileSystem.AppDataDirectory;
-        var filePath = Path.Combine(folder, fileName);
-        try
-        {
-            if (File.Exists(filePath))
+            catch (Exception e)
             {
-                string readedText = File.ReadAllText(filePath);
-                int lenght = readedText.Length;
-                List<String> list = new List<String>();
-                return readedText.Split('|');
+                Console.WriteLine(e);
+                throw;
             }
-            return null;
         }
-        catch (Exception e)
-        {
-            Console.WriteLine(e);
-            throw;
-        }
-    }
 
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+        public async Task SaveMakeMeAdmin(string fileName, User user)
+        {
+            var folder = FileSystem.AppDataDirectory;
+            var filePath = Path.Combine(folder, fileName);
+            try
+            {
+                string text = "|" + user.Username + "|";
+                await File.AppendAllTextAsync(filePath, text);
+                Console.WriteLine($"SuperBox-ul a fost salvat cu succes: {filePath}");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"A apărut o eroare la salvare: {ex.Message}");
+                throw;
+            }
+
+        }
+
+
+        public async Task<String[]> ReadMakeMeAdmin(string fileName)
+        {
+            var folder = FileSystem.AppDataDirectory;
+            var filePath = Path.Combine(folder, fileName);
+            try
+            {
+                if (File.Exists(filePath))
+                {
+                    string readedText = File.ReadAllText(filePath);
+                    int lenght = readedText.Length;
+                    List<String> list = new List<String>();
+                    return readedText.Split('|');
+                }
+
+                return null;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
+        }
+
+
+
+
+
+
+
+
+
+
+
 
 }

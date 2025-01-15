@@ -52,10 +52,10 @@ public partial class Home : ContentPage
         await Navigation.PushAsync(new AddSuperBox());
     }
 
-    private void ButtonSeeAdminRequests_OnClicked(object sender, EventArgs e)
+    private async void ButtonSeeAdminRequests_OnClicked(object sender, EventArgs e)
     {
         
-      
+        await Navigation.PushAsync(new AdminRequestList());
     }
     
 
