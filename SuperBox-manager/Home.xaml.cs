@@ -13,11 +13,13 @@ public partial class Home : ContentPage
 {
 
     public User Uuser { get; set; }
-    public Home(User user)
+    List<Comanda> Comenzi = new List<Comanda>();
+    public Home(User user, List<Comanda> comenzi)
     {
         InitializeComponent();
         Uuser = user;
         userName.Text = Uuser.Username;
+        Comenzi = comenzi;
     }
     
 
@@ -38,7 +40,7 @@ public partial class Home : ContentPage
 
     private async void ButtonShowPlacedOrders_OnClicked(object? sender, EventArgs e)
     {
-        await Navigation.PushAsync(new PlacedOrders(Uuser));
+        await Navigation.PushAsync(new PlacedOrders(Uuser, Comenzi));
 
     }
 

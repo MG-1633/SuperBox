@@ -19,17 +19,25 @@ public partial class SuperBoxList : ContentPage
 
     private async Task InitializeAsync()
     {
-        
-        string fileNameForDelivery = "AllSuperBoxes.txt";
-        SuperBoxes = await _fileService.ReadSuperBox(fileNameForDelivery);
-        foreach (var VARIABLE in SuperBoxes)
-        { 
-            SuperBoxListText.Text += VARIABLE.Id.ToString() + " " + VARIABLE.Location +  "\n";
-            
+        try
+        {
+
+
+
+            string fileNameForDelivery = "AllSuperBoxes.txt";
+            SuperBoxes = await _fileService.ReadSuperBox(fileNameForDelivery);
+            foreach (var VARIABLE in SuperBoxes)
+            {
+                SuperBoxListText.Text += VARIABLE.Id.ToString() + " " + VARIABLE.Location + "\n";
+
+            }
         }
-       
-        
-        
-        
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            throw;
+        }
+
+
     }
 }

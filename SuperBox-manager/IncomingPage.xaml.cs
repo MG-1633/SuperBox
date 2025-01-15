@@ -5,36 +5,37 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace SuperBox_manager;
-
-
-public partial class PlacedOrders : ContentPage
+    
+public partial class IncomingPage : ContentPage
 {
     private readonly FileService _fileService;
     public User UserX;
     public List<Comanda> Comenzi = new List<Comanda>();
-    public PlacedOrders(User user, List<Comanda> comenzi)
+    public IncomingPage( List<Comanda> comenzi )
     {
         InitializeComponent();
-        UserX = user;
         Comenzi = comenzi;
         _fileService = new FileService();
-        _ = InitializeAsync(); 
+        _ = InitializeAsync();
     }
-
+    
+    
     private async Task InitializeAsync()
     {
         
-       // string fileNameForDelivery = "Delivery3.txt";
-       // Comenzi = await _fileService.ReadDelivery(fileNameForDelivery, UserX);
         foreach (var VARIABLE in Comenzi)
         {
-            
-            Console.WriteLine("----" + VARIABLE);
-            if (VARIABLE.From != "")
+            if (VARIABLE.To == UserX.Username)
             {
-                OrderText.Text += VARIABLE.UserX.Username + " " + VARIABLE.To + " " + VARIABLE.To + " \n";
+                Console.WriteLine("----" + VARIABLE);
+                OrderText.Text += VARIABLE.IdComanda + " " + VARIABLE.From + " " + VARIABLE.Sender + " \n";
             }
         }
        
+        
+        
+        
     }
+    
+    
 }

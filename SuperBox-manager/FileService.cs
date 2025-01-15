@@ -7,6 +7,22 @@ namespace SuperBox_manager;
 public class FileService
 {
 
+    public async Task DeleteFile(string fileName)
+    {
+        var folder = FileSystem.AppDataDirectory;
+        var filePath = Path.Combine(folder, fileName);
+        try
+        {
+            await File.AppendAllTextAsync(filePath, String.Empty);
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            throw;
+        }
+    }
+    
+    
     public async Task SaveDelivery(string fileName, Comanda comanda)
     {
         var folder = FileSystem.AppDataDirectory;
@@ -495,11 +511,11 @@ public class FileService
             {
                 string text = "|" + user.Username + "/";
                 await File.AppendAllTextAsync(filePath, text);
-                Console.WriteLine($"SuperBox-ul a fost salvat cu succes: {filePath}");
+                Console.WriteLine($"Mesaj trimis cu succes: {filePath}");
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"A apărut o eroare la salvare: {ex.Message}");
+                Console.WriteLine($"A apărut o eroare la cerere Admin: {ex.Message}");
                 throw;
             }
 
