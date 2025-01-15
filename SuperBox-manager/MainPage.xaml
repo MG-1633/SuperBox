@@ -59,7 +59,7 @@
                 Text="Show Placed Orders" 
                 Clicked="ButtonShowPlacedOrders_OnClicked"
                 HorizontalOptions="Fill" />
-
+<!--
             <CollectionView x:Name="viewComenzi" >
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
@@ -81,7 +81,7 @@
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
-            
+     -->       
             <Button
                 x:Name="ButtonShowIncomingOrders"
                 Text="Show Incoming Orders" 
