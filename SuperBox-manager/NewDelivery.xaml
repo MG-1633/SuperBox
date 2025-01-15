@@ -33,7 +33,7 @@
                     <Frame BackgroundColor="Transparent" HeightRequest="40" WidthRequest="40" CornerRadius="30" Padding="0" Margin="5">
                         <Image Source="https://e7.pngegg.com/pngimages/223/244/png-clipart-computer-icons-avatar-user-profile-avatar-heroes-rectangle-thumbnail.png" Aspect="AspectFill" Margin="0"/>
                     </Frame>
-                    <Entry x:Name="fromField" Placeholder="from..." TextColor="Black" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="FillAndExpand" Margin="0,0,20,0"/>
+                    <Entry x:Name="fromField" Placeholder="from (boxID)" TextColor="Black" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="FillAndExpand" Margin="0,0,20,0"/>
                 </StackLayout>
             </Frame>
             
@@ -42,7 +42,7 @@
                     <Frame BackgroundColor="Transparent" HeightRequest="40" WidthRequest="40" CornerRadius="30" Padding="0" Margin="5">
                         <Image Source="https://e7.pngegg.com/pngimages/223/244/png-clipart-computer-icons-avatar-user-profile-avatar-heroes-rectangle-thumbnail.png" Aspect="AspectFill" Margin="0"/>
                     </Frame>
-                    <Entry x:Name="toField" Placeholder="to..." TextColor="Black" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="FillAndExpand" Margin="0,0,20,0"/>
+                    <Entry x:Name="toField" Placeholder="to boxID" TextColor="Black" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="FillAndExpand" Margin="0,0,20,0"/>
                 </StackLayout>
             </Frame>
            
@@ -51,7 +51,7 @@
                    <Frame BackgroundColor="Transparent" HeightRequest="40" WidthRequest="40" CornerRadius="30" Padding="0" Margin="5">
                        <Image Source="https://e7.pngegg.com/pngimages/223/244/png-clipart-computer-icons-avatar-user-profile-avatar-heroes-rectangle-thumbnail.png" Aspect="AspectFill" Margin="0"/>
                    </Frame>
-                   <Entry x:Name="reciverField" Placeholder="to..." TextColor="Black" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="FillAndExpand" Margin="0,0,20,0"/>
+                   <Entry x:Name="reciverField" Placeholder="to (username)" TextColor="Black" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="FillAndExpand" Margin="0,0,20,0"/>
                </StackLayout>
            </Frame>
             
