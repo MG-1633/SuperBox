@@ -20,7 +20,7 @@ namespace SuperBox_manager
         {
             isUrgentToggle = !isUrgentToggle;
         }
-    Random random = new Random();
+        Random random = new Random();
         private async void ButtonPlace_OnClicked(object? sender, EventArgs e)
         {
             

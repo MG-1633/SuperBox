@@ -3,6 +3,8 @@
     public partial class MainPage : ContentPage
     {
         int count = 0;
+        private readonly FileService _fileService;
+        
         public User Uuser { get; set; }
 
         public MainPage(User user)
@@ -10,6 +12,8 @@
             InitializeComponent();
             Uuser = user;
             userName.Text = Uuser.Username;
+            string fileNameForDelivery = "Delivery3.txt";
+            viewComenzi.ItemsSource = (System.Collections.IEnumerable)_fileService.ReadDelivery(fileNameForDelivery, Uuser);
             //BindingContext = Uuser;
         }
 
