@@ -59,6 +59,17 @@
                 Text="Show Placed Orders" 
                 Clicked="ButtonShowPlacedOrders_OnClicked"
                 HorizontalOptions="Fill" />
+
+            <CollectionView x:Name="viewComenzi"  ItemsLayout="Verticalist" SelectionMode="Multiple">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <VerticalStackLayout Background="Gray" Padding="5" Margin="5">
+                            <Label Text="{Binding .}" HorizontalOptions="Center" />
+                        </VerticalStackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+            
             <Button
                 x:Name="ButtonShowIncomingOrders"
                 Text="Show Incoming Orders" 
