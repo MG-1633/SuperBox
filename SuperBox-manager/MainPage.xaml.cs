@@ -53,17 +53,28 @@
 
         private async void ButtonBackToLogIn_OnClicked(object? sender, EventArgs e)
         {
-            await Navigation.PushAsync(new LoginPage());
-            _fileService.DeleteFile("Delivery3.txt");
-            _fileService.DeleteFile("credentialsTest.txt");
-            foreach (Comanda comanda in Comenzi)
+            try
             {
-                await _fileService.SaveDelivery("Delivery3.txt", comanda);
+                await Navigation.PushAsync(new LoginPage());
+                _fileService.DeleteFile("Delivery3.txt");
+                _fileService.DeleteFile("credentialsTest.txt");
+                foreach (Comanda comanda in Comenzi)
+                {
+                    await _fileService.SaveDelivery("Delivery4.txt", comanda);
+                }
+
+                foreach (User varUser in Users)
+                {
+                    await _fileService.SaveUser("credentialsTest.txt", varUser.Uuid, varUser.Username, varUser.Password,
+                        varUser.Admin, varUser.Phone, varUser.Email);
+                }
             }
-            foreach (User varUser in Users)
+
+            catch(Exception ex)
             {
-                await _fileService.SaveUser("credentialsTest.txt",varUser.Uuid, varUser.Username, varUser.Password,varUser.Admin, varUser.Phone, varUser.Email);
+                Console.WriteLine(ex.Message);
             }
+           
             
             
         }
@@ -86,7 +97,7 @@
 
         private async void ButtonShowIncomingOrders_OnClicked(object? sender, EventArgs e)
         {
-            await Navigation.PushAsync(new IncomingPage(Comenzi));
+            await Navigation.PushAsync(new IncomingPage(Comenzi, Uuser));
 
         }
 

@@ -11,10 +11,11 @@ public partial class IncomingPage : ContentPage
     private readonly FileService _fileService;
     public User UserX;
     public List<Comanda> Comenzi = new List<Comanda>();
-    public IncomingPage( List<Comanda> comenzi )
+    public IncomingPage( List<Comanda> comenzi ,User userX )
     {
         InitializeComponent();
         Comenzi = comenzi;
+        userX = userX;
         _fileService = new FileService();
         _ = InitializeAsync();
     }

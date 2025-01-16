@@ -153,7 +153,7 @@ public class FileService
 
 
 
-                    if (readedText[i] == '&')
+                    if (readedText[i] == '*')
                     {
                         j = i;
 

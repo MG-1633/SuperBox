@@ -46,9 +46,10 @@ public partial class Home : ContentPage
 
     }
 
-    private void ButtonShowIncomingOrders_OnClicked(object? sender, EventArgs e)
+    private async void ButtonShowIncomingOrders_OnClicked(object? sender, EventArgs e)
     {
-        //throw new NotImplementedException();
+        await Navigation.PushAsync(new IncomingPage(Comenzi,Uuser));
+
     }
 
     private async void ButtonAddSuperBox_OnClicked(object? sender, EventArgs e)

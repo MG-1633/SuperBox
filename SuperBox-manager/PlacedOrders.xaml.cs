@@ -30,9 +30,16 @@ public partial class PlacedOrders : ContentPage
         {
             
             Console.WriteLine("----" + VARIABLE);
-            if (VARIABLE.From != "")
+            if (VARIABLE.UserX.Admin == "true" )
             {
-                OrderText.Text += VARIABLE.UserX.Username + " " + VARIABLE.To + " " + VARIABLE.To + " \n";
+                
+                OrderText.Text +=  VARIABLE.To + " " + VARIABLE.From + " "+ VARIABLE.Reciver + " \n";
+            }
+            else
+            {
+                if (VARIABLE.Sender == VARIABLE.UserX.Username)
+                OrderText.Text +=  VARIABLE.To + " " + VARIABLE.From + " "+ VARIABLE.Reciver + " \n";
+
             }
         }
        
