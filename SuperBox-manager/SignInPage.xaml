@@ -65,7 +65,7 @@
                 <Frame BackgroundColor="Transparent" BorderColor="Black" Margin="0,15,0,0" Padding="0" HorizontalOptions="FillAndExpand" CornerRadius="30" >
                     <StackLayout Orientation="Horizontal">
                         <Frame BackgroundColor="Transparent" HeightRequest="40" WidthRequest="40" CornerRadius="30" Padding="0" Margin="5">
-                            <Image Source="https://e7.pngegg.com/pngimages/786/101/png-clipart-password-computer-icons-security-safety-icon-safety-icon-child-safety-lock-thumbnail.png" Aspect="AspectFill" Margin="0"/>
+                            <Image Source="https://png.pngtree.com/png-vector/20201028/ourmid/pngtree-phone-icon-in-solid-circle-png-image_2380227.jpg" Aspect="AspectFill" Margin="0"/>
                         </Frame>
                         <Entry x:Name="phone" Placeholder="Phone" TextColor="Black" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="FillAndExpand" Margin="0,0,20,0"/>
                     </StackLayout>
@@ -74,7 +74,7 @@
                 <Frame BackgroundColor="Transparent" BorderColor="Black" Margin="0,15,0,0" Padding="0" HorizontalOptions="FillAndExpand" CornerRadius="30" >
                     <StackLayout Orientation="Horizontal">
                         <Frame BackgroundColor="Transparent" HeightRequest="40" WidthRequest="40" CornerRadius="30" Padding="0" Margin="5">
-                            <Image Source="https://e7.pngegg.com/pngimages/786/101/png-clipart-password-computer-icons-security-safety-icon-safety-icon-child-safety-lock-thumbnail.png" Aspect="AspectFill" Margin="0"/>
+                            <Image Source="https://e7.pngegg.com/pngimages/947/916/png-clipart-e-mail-icon-email-computer-icons-symbol-mail-icon-miscellaneous-angle.png" Aspect="AspectFill" Margin="0"/>
                         </Frame>
                         <Entry x:Name="email" Placeholder="email" TextColor="Black" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="FillAndExpand" Margin="0,0,20,0"/>
                     </StackLayout>

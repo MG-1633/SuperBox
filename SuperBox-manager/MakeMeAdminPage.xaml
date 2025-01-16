@@ -3,14 +3,27 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="SuperBox_manager.MakeMeAdminPage">
-    <ContentPage.Content>
+    <Grid>
         
-        <Button
-            x:Name="MakeMeAdminSend"
-            Text="Send" 
-            SemanticProperties.Hint="Counts the number of times you click"
-            Clicked="MakeMeAdminSend_OnClicked"
-            HorizontalOptions="Fill" />
+        <Grid.RowDefinitions>
+            <RowDefinition Height="220"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="50"/>
+
+
+        </Grid.RowDefinitions>
         
-    </ContentPage.Content>
+        <StackLayout>
+            
+            <Button
+             x:Name="MakeMeAdminSend"
+             Text="Send" 
+             SemanticProperties.Hint="Counts the number of times you click"
+             Clicked="MakeMeAdminSend_OnClicked"
+             HorizontalOptions="Fill" />
+            
+        </StackLayout>
+        
+    </Grid>
+    
 </ContentPage>

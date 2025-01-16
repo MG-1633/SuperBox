@@ -23,5 +23,8 @@ public partial class MakeMeAdminPage : ContentPage
         string fileName = "AdminList1.txt";
         await _fileService.SaveMakeMeAdmin(fileName, UserX);
 
+        await DisplayAlert("Succes", $"Cererea a fost trimisa cu succes.", "OK");
+
+
     }
 }

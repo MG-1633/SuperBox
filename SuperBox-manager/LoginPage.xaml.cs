@@ -15,8 +15,9 @@ public partial class LoginPage : ContentPage
 		InitializeComponent();
 		_fileService = new FileService(); 
 	}
-List<User> users = new List<User>();
-List<Comanda> Comenzi = new List<Comanda>();
+
+	List<User> users = new List<User>();
+	List<Comanda> Comenzi = new List<Comanda>();
 
     private async void ButtonClicked_OnClicked(object sender, EventArgs e)
 	{
@@ -56,26 +57,7 @@ List<Comanda> Comenzi = new List<Comanda>();
 
 
         
-        //	if (savedData != null)
-	//	{
-
-
-
-
-			//catre MainPage
-	//		if (savedData.Admin == "true")
-	//		{
-      //          await Navigation.PushAsync(new Home(savedData));
-
-     //       }
-     //       else await Navigation.PushAsync(new MainPage(savedData));
-
-	//	}
-	//	else
-	//	{
-
-	//		await DisplayAlert("Eșec", "Utilizator sau parolă incorecte.", "OK");
-	//	}
+        
 	}
 	
 	private async void EnterMethod_OnClicked(object? sender, EventArgs e)

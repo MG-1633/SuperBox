@@ -16,7 +16,7 @@
             Users = users;
             userName.Text = Uuser.Username;
             
-            viewComenzi.ItemsSource = GetComandas();
+            //viewComenzi.ItemsSource = GetComandas();
         }
         
         
